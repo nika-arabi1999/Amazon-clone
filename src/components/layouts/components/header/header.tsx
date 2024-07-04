@@ -8,7 +8,7 @@ export default function Header() {
     <nav className="nav">
       <div className="nav_row nav_row__up">
         <div className="nav_row__left">
-          <MenuIcon fontSize="large" />
+          <MenuIcon sx={{ fontSize: 35}} />
           <img
             src="https://pngimg.com/uploads/amazon/amazon_PNG25.png"
             style={{ width: "70px" }}
@@ -18,10 +18,10 @@ export default function Header() {
         <div className="nav_row__right">
           <a href="#">Sign In</a>
           <a href="#">
-            <PersonIcon fontSize="large" />
+            <PersonIcon sx={{ fontSize: 35}} />
           </a>
           <a href="#">
-            <ShoppingCartOutlinedIcon fontSize="large" />
+            <ShoppingCartOutlinedIcon sx={{ fontSize: 35}} />
           </a>
         </div>
       </div>
@@ -54,7 +54,7 @@ function NavSearch({ device }) {
       </div>
       <div className="search_box search_box__btn">
         <button className="search_item search_item__btn">
-          <Search />
+          <Search fontSize="large" />
         </button>
       </div>
     </div>

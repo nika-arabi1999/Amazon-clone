@@ -1,5 +1,5 @@
 #root {
-  max-width: 1280px;
+  max-width: 1600px;
   width: 100%;
   margin: 0 0;
   padding: 0;
@@ -8,7 +8,29 @@
 .home {
   width: 100%;
   height: 100vh;
+  background: #e3e6e6;
+  font-size: 15px;
+  &-content {
+    margin-top: -7rem;
+  }
+  
 }
 img {
   background-color:transparent ;
 }
+@media (min-width: 768px) {
+  .home-content {
+   margin-top: -14rem;
+ }
+ }
+@media (min-width: 1024px) {
+ .home-content {
+  margin-top: -25rem;
+}
+}
+
+@media (min-width: 1400px) {
+  .home-content {
+   margin-top: -30rem;
+ }
+ }
