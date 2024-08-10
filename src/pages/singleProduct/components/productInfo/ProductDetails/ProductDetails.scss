@@ -1,0 +1,62 @@
+.details{
+    &_title {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        font-size: 2rem;
+        box-sizing: border-box;
+        padding: 1rem;
+        width: 100%;
+        border-bottom:1px solid #000 ;
+        &_name {
+            font-weight: bold;
+            text-align: start;
+        }
+        &_rate {
+            width: 100%;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            // text-align: start;
+          .rate {
+            &-average {
+                font-weight: bold;
+                font-size: 1.8rem;
+            }
+            &-stars {
+                color: orange;
+                font-weight: bold;
+                justify-self: stretch;
+                margin-left: 10px;
+                
+            }
+          }
+        }}
+
+
+        &_price {
+            text-align: start;
+            font-size: 3rem;
+            font-weight: bold;
+            padding: 10px;
+        }
+
+        &_description {
+            font-size: 1.6rem;
+            padding: 15px 0 35px;
+            text-align: start;
+            border-bottom:1px solid #000 ;
+        }
+    
+}
+
+
+@media (min-width: 768px) {
+    .details_title_rate {
+            display: flex;
+            flex-direction: column;
+            text-align: start;
+        }
+    
+    
+}

@@ -115,15 +115,15 @@ a {
          width: 40px;
          background: #febd68;
          border-radius:  0 10px 10px 0;
-         .css-i4bv87-MuiSvgIcon-root {
-          // font-size: 2.5rem;
-        }
-         
         }
         
       }
 }
-
+@media (max-width: 768px) {
+  .desktop{
+    display: none;
+  }
+}
 
 
 @media only screen and (min-width: 768px) {
@@ -132,9 +132,9 @@ a {
   }
 }
 
-@media only screen and (max-width: 768px) {
+@media only screen and (min-width: 1024px) {
   .desktop{
-    display: none;
+    // display: block;
   }
 }
 

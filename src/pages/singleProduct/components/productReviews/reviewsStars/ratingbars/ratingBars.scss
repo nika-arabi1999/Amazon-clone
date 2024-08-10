@@ -1,0 +1,41 @@
+
+  .emptyProgressBar {
+    background-color: #e7e4da;
+    border: 1px solid #c7c5bc;
+    border-radius:5px;
+    height: 2.5rem;
+    overflow: hidden;
+    position: relative;
+    justify-self: start;
+    z-index: 9;
+  }
+  .fillingProgressBar {
+    background-color: orange;
+    z-index: 10;
+    border-radius: 5px;
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    justify-self: start;
+  }
+  .percentage {
+    // color: ;
+    width: 6rem;
+    font-size: 46px;
+    text-align: start;
+  }
+  .starNumber {
+    width: 6rem;
+    text-align: start;
+  }
+ 
+  .mainProgressBarDiv {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    flex-direction: row;
+    width: 100%;
+    margin-top: 10px;
+  }
+  

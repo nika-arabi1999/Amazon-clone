@@ -222,3 +222,82 @@ export const gridItems2 = [
     ],
   },
 ];
+
+export const comments = [
+  {
+    postId: 0,
+    id: 0,
+    name: "Nika Arabi",
+    email: "Eliseo@gardner.biz",
+    body: "laudantium enim quasi est quidem magnam voluptate ipsam eos\ntempora quo necessitatibus\ndolor quam autem quasi\nreiciendis et nam sapiente accusantium",
+  },
+  {
+    postId: 1,
+    id: 1,
+    name: "Sara Don",
+    email: "Eliseo@gardner.biz",
+    body: "laudantium enim quasi est quidem magnam voluptate ipsam eos\ntempora quo necessitatibus\ndolor quam autem quasi\nreiciendis et nam sapiente accusantium",
+  },
+  {
+    postId: 1,
+    id: 2,
+    name: "Peter Pon",
+    email: "Jayne_Kuhic@sydney.com",
+    body: "est natus enim nihil est dolore omnis voluptatem numquam\net omnis occaecati quod ullam at\nvoluptatem error expedita pariatur\nnihil sint nostrum voluptatem reiciendis et",
+  },
+  {
+    postId: 1,
+    id: 3,
+    name: "Jack Hail",
+    email: "Nikita@garfield.biz",
+    body: "quia molestiae reprehenderit quasi aspernatur\naut expedita occaecati aliquam eveniet laudantium\nomnis quibusdam delectus saepe quia accusamus maiores nam est\ncum et ducimus et vero voluptates excepturi deleniti ratione",
+  },
+  {
+    postId: 1,
+    id: 4,
+    name: "Simon Zate",
+    email: "Lew@alysha.tv",
+    body: "non et atque\noccaecati deserunt quas accusantium unde odit nobis qui voluptatem\nquia voluptas consequuntur itaque dolor\net qui rerum deleniti ut occaecati",
+  },
+  {
+    postId: 1,
+    id: 5,
+    name: "John Randel",
+    email: "Hayden@althea.biz",
+    body: "harum non quasi et ratione\ntempore iure ex voluptates in ratione\nharum architecto fugit inventore cupiditate\nvoluptates magni quo et",
+  },
+  {
+    postId: 2,
+    id: 6,
+    name: "Kristen Stand",
+    email: "Presley.Mueller@myrl.com",
+    body: "doloribus at sed quis culpa deserunt consectetur qui praesentium\naccusamus fugiat dicta\nvoluptatem rerum ut voluptate autem\nvoluptatem repellendus aspernatur dolorem in",
+  },
+];
+
+export const cartItems = [
+  {
+    id: 1000,
+    name: "lorem Ipsum luctus et ultrices pos meaning in culpa",
+    image: "images/swiperCardItems/cart1.webp",
+    size: "4",
+    color: "black",
+    price: "10.5$",
+  },
+  {
+    id: 1001,
+    name: "lorem Ipsum luctus et ultrices pos meaning in culpa",
+    image: "images/swiperCardItems/cart2.jpg",
+    size: "2 pack",
+    color: "red",
+    price: "23.42$",
+  },
+  {
+    id: 1002,
+    name: "lorem Ipsum luctus et ultrices pos meaning in culpa",
+    image: "images/swiperCardItems/cart3.jpg",
+    size: "30 mL",
+    color: "white",
+    price: "19.8$",
+  },
+];

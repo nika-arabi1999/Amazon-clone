@@ -1,11 +1,10 @@
 import { Swiper, SwiperSlide } from "swiper/react";
-import "swiper/css";
-import "swiper/css/scrollbar";
-import "swiper/css/navigation";
+
 import "./home.scss";
 import { bannerItems, gridItems2, gridItems1, swiperItems } from "./items";
 import { Mousewheel, Navigation } from "swiper/modules";
 import { useEffect, useState } from "react";
+import useResizeWindow from "../../hooks/useResizeWindow";
 export default function Home() {
   return (
     <div className="home">
@@ -15,7 +14,7 @@ export default function Home() {
       <div className="home-content">
         <GridCards gridItems={gridItems1} />
         {/* ---------------swiper cards component ------------------*/}
-        <SwiperCards />
+        <SwiperCards title={"most popular items:"} swiperItems={swiperItems} />
         {/* ----------------cards component ------------------*/}
         <GridCards gridItems={gridItems2} />
       </div>
@@ -57,45 +56,40 @@ function GridCards({ gridItems }) {
   );
 }
 
-function SwiperCards() {
-  const [slidesPerView, setSlidesPerView] = useState(getSlidesPerView());
+export function SwiperCards({
+  title,
+  swiperItems,
+}: {
+  title: string;
+  swiperItems: any;
+}) {
+  const [isMobile, isTablet, isDesktop] = useResizeWindow();
 
-  function getSlidesPerView() {
-    return window.innerWidth >= 1024 ? 4 : window.innerWidth >= 768 ? 2 : 1;
-  }
-
+  const [slidesPerView, setSlidesPerView] = useState<number>();
   useEffect(() => {
-    const handleResize = () => {
-      setSlidesPerView(getSlidesPerView());
-    };
-    window.addEventListener("resize", handleResize);
-    return () => {
-      window.removeEventListener("resize", handleResize);
-    };
-  }, []);
-
-  // console.log(window.innerWidth);
+    isMobile
+      ? setSlidesPerView(1)
+      : isTablet
+      ? setSlidesPerView(2)
+      : setSlidesPerView(4);
+  }, [isMobile, isTablet, isDesktop]);
 
   return (
-    <div className="SwiperCards-container">
-      <p style={{ fontSize: "2rem", fontWeight: "bold" }}>
-        most popular items:
-      </p>
+    <div className="SwiperCards-container" >
+      <p style={{ fontSize: "2rem", fontWeight: "bold" }}>{`${title}`}</p>
       <Swiper
         modules={[Navigation, Mousewheel]}
         spaceBetween={2}
         direction={"horizontal"}
         slidesPerView={slidesPerView}
         mousewheel={true}
-        onSlideChange={() => console.log("slide change")}
-        onSwiper={(swiper) => console.log(swiper)}
         navigation={true}
         className="card-swiper"
       >
         {swiperItems.map((item) => {
           return (
             <SwiperSlide className="card-swiper-slide" key={item.id}>
-              <img src={`${item.imgUrl}`} className="card-swiper-slide_img" />
+              <img src={`${item.imgUrl || item.image}`} className="card-swiper-slide_img" />
             </SwiperSlide>
           );
         })}
@@ -125,8 +119,6 @@ function SwiperBanner() {
         modules={[Navigation]}
         spaceBetween={20}
         slidesPerView={1}
-        onSlideChange={() => console.log("slide change")}
-        onSwiper={(swiper) => console.log(swiper)}
         navigation={true}
         className="banner_swiper"
       >

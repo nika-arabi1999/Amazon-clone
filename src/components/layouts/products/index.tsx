@@ -1,13 +1,15 @@
 import React from "react";
 import Header from "../components/header/Header";
+import ProductsSideBar from "./components/sidebar";
 
 function ProductsLayout({ children }: { children: React.ReactNode }) {
   return (
-    <div>
+    <div style={{ width: "100%", height: "100%" }}>
       <Header />
-      <div style={{display:"flex",}}>
-        <div className="sidebar" >sidebar</div>
-        <div className="">{children}</div></div>
+      <div style={{ display: "flex", width: "100%", height: "100%" }}>
+        <ProductsSideBar />
+        {children}
+      </div>
     </div>
   );
 }
