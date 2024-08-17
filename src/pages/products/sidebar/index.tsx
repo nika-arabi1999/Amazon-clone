@@ -1,10 +1,9 @@
 import React from "react";
 import "./sidebar.scss";
 import ReactSlider from "react-slider";
+import { CheckboxGroup } from "../../../components/common/checkboxGroup";
+import { Checkbox } from "@mui/material";
 function ProductsSideBar() {
-  // const pros = useGetProductsQuery();
-  // console.log(pros)
-
   return (
     <div className="sidebar">
       <div className="sidebar-box_department">
@@ -32,17 +31,23 @@ function ProductsSideBar() {
   );
 }
 
-function BrandsFilter(params: type) {
+function BrandsFilter() {
+  const handleGroupChange = (checkedValues: string[]) => {
+    console.log(checkedValues);
+  };
   return (
     <div className="sidebar-box_brands">
       <div className="sidebar-box_title">brands</div>
+
       <div className="sidebar-box_content">
-        {brands.map((brand) => (
-          <div className="single-brand">
-            <input type="checkbox"></input>
-            <label htmlFor="input">{`${brand.name}`}</label>
-          </div>
-        ))}
+        <CheckboxGroup
+          onChange={handleGroupChange}
+          // className="sidebar-box_content"
+        >
+          {brands.map((brand) => (
+            <Checkbox value={brand.name} key={brand.name} />
+          ))}
+        </CheckboxGroup>
       </div>
     </div>
   );

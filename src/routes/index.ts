@@ -9,7 +9,8 @@ const Cart = React.lazy(() => import("../pages/cart"));
 export const homeRoutes = [
   { path: "/", element: Home },
   { path: "/singleProduct", element: SingleProduct },
-  { path: "/cart", element: Cart}
+  { path: "/cart", element: Cart},
+  { path: "/products/:slug", element: Products }
 ];
-export const productsRoutes = [{ path: "/products", element: Products }];
+
 

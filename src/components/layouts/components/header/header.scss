@@ -48,6 +48,10 @@
       align-items: center;
       justify-content: center;
       gap: 1rem;
+      .menuIcon-span {
+        cursor: pointer;
+        // background: #000;
+      }
     }
   }
   
@@ -57,6 +61,7 @@ a {
   width: auto;
   text-wrap: nowrap;
   height: 100%;
+  color: #fff;
   
 }
 
@@ -119,22 +124,37 @@ a {
         
       }
 }
-@media (max-width: 768px) {
+.desktop{
+  display: none;
+}
+@media (min-width: 480px) {
   .desktop{
     display: none;
   }
+  .mobile {
+    display: flex;
+  }
+  
 }
 
 
-@media only screen and (min-width: 768px) {
+@media (min-width: 768px) {
+  .desktop {
+    display: none;
+  }
+  .mobile {
+    display: flex;
+  }
+}
+
+@media (min-width: 1024px) {
+  .desktop {
+    display: flex;
+  }
   .mobile {
     display: none;
   }
 }
 
-@media only screen and (min-width: 1024px) {
-  .desktop{
-    // display: block;
-  }
-}
+
 

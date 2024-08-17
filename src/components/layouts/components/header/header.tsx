@@ -3,12 +3,25 @@ import { Search } from "@mui/icons-material";
 import MenuIcon from "@mui/icons-material/Menu";
 import PersonIcon from "@mui/icons-material/Person";
 import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
-export default function Header() {
+export default function Header({
+  setShowSheet,
+}: {
+  setShowSheet: React.Dispatch<React.SetStateAction<boolean>>;
+}) {
+  // const openSheet = () => {
+  //   setShowSheet(true);
+  // };
   return (
     <nav className="nav">
       <div className="nav_row nav_row__up">
         <div className="nav_row__left">
-          <MenuIcon sx={{ fontSize: 35}} />
+          <span
+            onClick={() => setShowSheet(true)}
+            style={{ cursor: "pointer" }}
+            className="menuIcon-span"
+          >
+            <MenuIcon sx={{ fontSize: 35 }} />
+          </span>
           <img
             src="https://pngimg.com/uploads/amazon/amazon_PNG25.png"
             style={{ width: "70px" }}
@@ -18,10 +31,10 @@ export default function Header() {
         <div className="nav_row__right">
           <a href="#">Sign In</a>
           <a href="#">
-            <PersonIcon sx={{ fontSize: 35}} />
+            <PersonIcon sx={{ fontSize: 35 }} />
           </a>
           <a href="#">
-            <ShoppingCartOutlinedIcon sx={{ fontSize: 35}} />
+            <ShoppingCartOutlinedIcon sx={{ fontSize: 35 }} />
           </a>
         </div>
       </div>
@@ -32,7 +45,7 @@ export default function Header() {
   );
 }
 
-function NavSearch({ device }) {
+function NavSearch({ device }: { device: string }) {
   return (
     <div className={`search ${device}`}>
       <div className="search_box search_box__category">

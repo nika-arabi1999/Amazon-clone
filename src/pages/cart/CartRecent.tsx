@@ -17,7 +17,7 @@ function CartRecent() {
           modules={[Navigation, Mousewheel]}
           spaceBetween={0}
           direction={"horizontal"}
-          slidesPerView={isMobile ? 2.5 : isTablet ? 3.75 : 6.5}
+          slidesPerView={isMobile ? 2.5 : isTablet ? 3.75 : 6.5} 
           mousewheel={true}
           navigation={true}
           className="card-swiper"

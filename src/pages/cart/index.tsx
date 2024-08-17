@@ -5,12 +5,15 @@ import SavedItems from "./SavedItems";
 import SubTotal from "./SubTotal";
 import "./cart.scss";
 import CartRecent from "./CartRecent";
+import useResizeWindow from "../../hooks/useResizeWindow";
 
 function Cart() {
+  const [isMobile] = useResizeWindow();
   return (
     <div className="cart">
       {/* ___________content___________ */}
-      <CartContentDesktop />
+      {isMobile ?  <CartContent /> : <CartContentDesktop /> };
+
       {/* ___________recent___________ */}
       <div className="cart-recent">
         <CartRecent />

@@ -64,18 +64,18 @@ export function SwiperCards({
   swiperItems: any;
 }) {
   const [isMobile, isTablet, isDesktop] = useResizeWindow();
-
   const [slidesPerView, setSlidesPerView] = useState<number>();
+
   useEffect(() => {
-    isMobile
-      ? setSlidesPerView(1)
+    isDesktop
+      ? setSlidesPerView(4)
       : isTablet
       ? setSlidesPerView(2)
-      : setSlidesPerView(4);
+      : setSlidesPerView(1);
   }, [isMobile, isTablet, isDesktop]);
 
   return (
-    <div className="SwiperCards-container" >
+    <div className="SwiperCards-container">
       <p style={{ fontSize: "2rem", fontWeight: "bold" }}>{`${title}`}</p>
       <Swiper
         modules={[Navigation, Mousewheel]}
@@ -89,7 +89,10 @@ export function SwiperCards({
         {swiperItems.map((item) => {
           return (
             <SwiperSlide className="card-swiper-slide" key={item.id}>
-              <img src={`${item.imgUrl || item.image}`} className="card-swiper-slide_img" />
+              <img
+                src={`${item.imgUrl || item.image}`}
+                className="card-swiper-slide_img"
+              />
             </SwiperSlide>
           );
         })}
