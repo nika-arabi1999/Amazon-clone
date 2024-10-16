@@ -1,9 +1,17 @@
-import React from "react";
+import React, { ChangeEvent, useState } from "react";
+import RangeSlider from "react-range-slider-input";
+import "react-range-slider-input/dist/style.css";
 import "./sidebar.scss";
-import ReactSlider from "react-slider";
-import { CheckboxGroup } from "../../../components/common/checkboxGroup";
-import { Checkbox } from "@mui/material";
-function ProductsSideBar() {
+
+function ProductsSideBar({
+  brands,
+  colors,
+  price,
+}: {
+  brands: string[];
+  colors: string[];
+  price: number[];
+}) {
   return (
     <div className="sidebar">
       <div className="sidebar-box_department">
@@ -16,13 +24,9 @@ function ProductsSideBar() {
       </div>
 
       <StarRating />
-      <BrandsFilter />
-      {/* <RangeSlider /> */}
-
-      <div className="sidebar-box_color">
-        <div className="sidebar-box_title">color</div>
-        <div className="sidebar-box_content">color</div>
-      </div>
+      <BrandsFilter brands={brands} />
+      <ColorsFilter colors={colors} />
+      <PriceSlider price={price} />
       <div className="sidebar-box_seller">
         <div className="sidebar-box_title">seller</div>
         <div className="sidebar-box_content">seller</div>
@@ -31,24 +35,55 @@ function ProductsSideBar() {
   );
 }
 
-function BrandsFilter() {
-  const handleGroupChange = (checkedValues: string[]) => {
-    console.log(checkedValues);
-  };
+function BrandsFilter({ brands }: { brands: string[] }) {
   return (
-    <div className="sidebar-box_brands">
+    <div className="sidebar-box_checkbox">
       <div className="sidebar-box_title">brands</div>
 
       <div className="sidebar-box_content">
-        <CheckboxGroup
-          onChange={handleGroupChange}
-          // className="sidebar-box_content"
-        >
-          {brands.map((brand) => (
-            <Checkbox value={brand.name} key={brand.name} />
-          ))}
-        </CheckboxGroup>
+        {brands ? <CheckBoxGroup options={brands} /> : ""}
       </div>
+    </div>
+  );
+}
+function ColorsFilter({ colors }: { colors: string[] }) {
+  return (
+    <div className="sidebar-box_checkbox">
+      <div className="sidebar-box_title">Colors</div>
+      <div className="sidebar-box_content">
+        {colors ? <CheckBoxGroup options={colors} /> : ""}
+      </div>
+    </div>
+  );
+}
+
+function CheckBoxGroup({ options }: { options: any }) {
+  const [checkedItems, setCheckedItems] = useState<string[]>([]);
+
+  const handleCheckboxChange = (event: ChangeEvent<HTMLInputElement>) => {
+    const { value, checked } = event.target;
+
+    if (checked) {
+      setCheckedItems((prev) => [...prev, value]);
+    } else {
+      setCheckedItems((prev) => prev.filter((item) => item !== value));
+    }
+  };
+  console.log(checkedItems);
+  return (
+    <div>
+      {options.map((option: any) => (
+        <div key={option}>
+          <label>
+            <input
+              type="checkbox"
+              onChange={(e) => handleCheckboxChange(e)}
+              value={option}
+            />
+            {option}
+          </label>
+        </div>
+      ))}
     </div>
   );
 }
@@ -64,34 +99,23 @@ export const StarRating = () => {
   );
 };
 
-export const RangeSlider = () => {
+export const PriceSlider = ({ price }: { price: number[] }) => {
+  console.log(price);
+  const [value, setValue] = React.useState<number[]>([20, 37]);
+  function valuetext(value: number) {
+    return `${value}°C`;
+  }
+  const handleChange = (event: Event, newValue: number | number[]) => {
+    setValue(newValue as number[]);
+  };
   return (
     <div className="sidebar-box_price" style={{ width: "100%" }}>
-      <div className="sidebar-box_title">price</div>
+      <div className="sidebar-box_title">Price</div>
       <div className="sidebar-box_content" style={{ width: "100%" }}>
-        <ReactSlider
-          className="horizontal-slider  range-slider"
-          thumbClassName="example-thumb"
-          trackClassName="example-track"
-          defaultValue={[0, 100]}
-          ariaLabel={["Lower thumb", "Upper thumb"]}
-          ariaValuetext={(state) => `Thumb value ${state.valueNow}`}
-          renderThumb={(props, state) => <div {...props}>{state.valueNow}</div>}
-          pearling
-          minDistance={10}
-        />
+        {price ? <RangeSlider min={99} max={1179} defaultValue={[99,1179]}/> : "..."}
       </div>
     </div>
   );
 };
-
-const brands = [
-  { name: "Selleraaaa" },
-  { name: "Sellerlll" },
-  { name: "Sellermmmm" },
-  { name: "Sellerppp" },
-  { name: "Sellernnnn" },
-  { name: "Sellercccc" },
-];
 
 export default ProductsSideBar;

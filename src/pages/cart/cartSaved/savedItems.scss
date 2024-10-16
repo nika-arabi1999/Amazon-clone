@@ -1,0 +1,17 @@
+
+
+
+
+
+@media (min-width: 768px) {
+    .cart {
+        &-saved {
+            &_list {
+               flex-direction: row;
+               flex-wrap: wrap;
+               box-sizing: border-box;
+               padding: 1rem;
+           }
+           } 
+    }
+ }

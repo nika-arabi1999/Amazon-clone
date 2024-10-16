@@ -1,11 +1,10 @@
 import { Swiper, SwiperSlide } from "swiper/react";
-import { useGetProductsQuery } from "../../../../services/dashboardApi";
-import { SwiperCards } from "../../../home";
-import { swiperItems } from "../../../home/items";
+
 
 import { ProductCard } from "../../../products";
 import { Mousewheel, Navigation } from "swiper/modules";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
+import { ProductContext } from "../..";
 // import
 function ProductRelated() {
   return (
@@ -21,7 +20,8 @@ function ProductRelated() {
 }
 
 export function SwiperRelatedItems() {
-  const { data } = useGetProductsQuery();
+
+  const { product } = useContext(ProductContext);
   const [slidesPerView, setSlidesPerView] = useState(getSlidesPerView());
 
   function getSlidesPerView() {
@@ -41,17 +41,17 @@ export function SwiperRelatedItems() {
     <div className="">
       <Swiper
         modules={[Navigation, Mousewheel]}
-        spaceBetween={2}
+        spaceBetween={10}
         direction={"horizontal"}
         slidesPerView={slidesPerView}
         mousewheel={true}
         navigation={true}
         className="card-swiper"
       >
-        {data?.data.map((product, index) => {
+        {product?.related_products.map((product, index) => {
           return (
-            <SwiperSlide style={{ fontSize: "1.6rem" }}>
-              <ProductCard product={product} key={index} />
+            <SwiperSlide style={{ fontSize: "1.6rem" }} key={index}>
+              <ProductCard product={product} />
             </SwiperSlide>
           );
         })}

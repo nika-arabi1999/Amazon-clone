@@ -2,28 +2,58 @@ import { Avatar } from "@mui/material";
 import ChevronRightIcon from "@mui/icons-material/ChevronRight";
 import "./MenuSheet.scss";
 import { lightGreen } from "@mui/material/colors";
+import { useGetCategoriesQuery } from "../../../../services/dashboardApi";
+import { Link } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { mockApi } from "../../../../services/mockApi";
 
-const categories = [
-  {
-    title: "Shop by Department",
-    categories: [
-      "Electronics",
-      "Computers",
-      "Smart Home",
-      "Arts and Crafts",
-      "video games",
-    ],
-  },
-  {
-    title: "Digital Content & Devices",
-    categories: ["Electronics", "Computers", "Smart Home", "Arts and Crafts"],
-  },
-  {
-    title: "Programs & Features",
-    categories: ["Electronics", "Computers", "Smart Home", "Arts and Crafts"],
-  },
-];
+// const categories = [
+//   {
+//     title: "Shop by Department",
+//     categories: [
+//       "Electronics",
+//       "Computers",
+//       "Smart Home",
+//       "Arts and Crafts",
+//       "video games",
+//     ],
+//   },
+//   {
+//     title: "Digital Content & Devices",
+//     categories: ["Electronics", "Computers", "Smart Home", "Arts and Crafts"],
+//   },
+//   {
+//     title: "Programs & Features",
+//     categories: ["Electronics", "Computers", "Smart Home", "Arts and Crafts"],
+//   },
+// ];
 function MenuSheet() {
+  // const { data } = useGetCategoriesQuery();
+  // const categories = data?.data;
+  const [categories, setCategories] = useState([]);
+  const [loding, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    // Function to fetch products based on a category
+    const fetchCategories = async () => {
+      try {
+        setLoading(true);
+        const categories = await mockApi.getCategories(); // Example: Fetching categories from "Electronics"
+        setCategories(categories);
+      } catch (err) {
+        setError(err.message);
+      } finally {
+        setLoading(false);
+      }
+    }; fetchCategories();
+  }, []);
+
+
+
+
+  console.log(categories);
+
   return (
     <div className="menu">
       <div className="menu-hello">
@@ -41,11 +71,17 @@ function MenuSheet() {
       <div className="menu-content">
         <div className="menu-content_box box-department">
           <h4>Shop By Department</h4>
-          {categories[1].categories.map((category) => {
+          {categories?.map((category) => {
             return (
-              <li className="menu-content_box_item">
-                <p>{category}</p>
-                <ChevronRightIcon sx={{ fontSize: 30, color: "#bbbbbb" }} />
+              <li>
+                <Link
+                  to={`/products/${category.id}`}
+                  className="menu-content_box_item"
+                >
+                  {" "}
+                  <p>{category.name}</p>
+                  <ChevronRightIcon sx={{ fontSize: 30, color: "#bbbbbb" }} />
+                </Link>
               </li>
             );
           })}

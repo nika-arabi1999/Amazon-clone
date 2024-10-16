@@ -31,7 +31,6 @@
         padding: 17px;
     }
     &-table {
-        width: 50%;
         padding: 17px;
     }
 }
@@ -51,6 +50,7 @@
         &-reviews {
             flex-direction: row;
         }
+        &-table {width: 50%;}
     }
 }
 

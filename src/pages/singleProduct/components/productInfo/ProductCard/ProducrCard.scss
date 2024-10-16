@@ -60,21 +60,7 @@
 
 }}
 
-.CardBtn {
-    width: 100%;
-    font-size: 2rem;
-    padding: 1.2rem;
-    border-radius: 10rem;
-    background: rgba(255, 215, 18, 1);
-    border: none;
-    box-shadow:  0 2px 5px 0 rgba(213, 217, 217, .5);
-    &:active {
-        outline: 5px solid #8becff;
-    }
-    &:hover {
-        filter: brightness(97%);
-    }
-}
+
 
 @media (min-width: 768px) {
     .card {

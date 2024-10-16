@@ -1,9 +1,14 @@
 import ImageGallery from "react-image-gallery";
-import { product } from "../../../product"; 
+
 //style
 import "react-image-gallery/styles/scss/image-gallery.scss";
+import { useContext } from "react";
+import { ProductContext } from "../../..";
 
 function SingleProductSwiper() {
+  const { product } = useContext(ProductContext);
+  console.log(product);
+  
   const productsWithOriginal = product.assets.map((image) => ({
     original: image.url,
     thumbnail: image.url,

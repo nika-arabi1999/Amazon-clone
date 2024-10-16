@@ -1,4 +1,4 @@
-import { CardBtn } from "../singleProduct/components/productInfo/ProductCard";
+import CardBtn from "../../components/common/btn/CardBtn";
 import "./../singleProduct/components/productInfo/ProductCard/ProducrCard.scss"
 function SubTotal() {
   return (
@@ -11,7 +11,7 @@ function SubTotal() {
         This order contains a gift
       </span>
       <span className="cart-subtotal-btn">
-        <CardBtn text={"Proceed to checkout"} />
+      <CardBtn className="CardBtn primary" style={{width:"100%"}}>Proceed To checkout</CardBtn>
       </span>
     </div>
   );

@@ -1,4 +1,4 @@
-import "./cart.scss";
+
 
 import { cartItems } from "../home/items";
 import { Swiper, SwiperSlide } from "swiper/react";

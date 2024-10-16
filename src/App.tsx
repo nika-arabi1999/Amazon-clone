@@ -1,13 +1,11 @@
 import { Route, Routes } from "react-router-dom";
 import "./App.scss";
-
 import { homeRoutes } from "./routes";
 import HomeLayout from "./components/layouts/home";
 import AppRoute from "./routes/AppRoute";
 
 function App() {
-  // const { data, isLoading } = useGetCategoriesQuery();
-  // console.log(data);
+ 
 
   return (
     <Routes>
@@ -19,6 +17,7 @@ function App() {
         );
       })}
     </Routes>
+    
   );
 }
 

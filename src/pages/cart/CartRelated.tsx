@@ -1,8 +1,10 @@
-import "./cart.scss";
+
 
 import { cartItems } from "../home/items";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Mousewheel, Navigation } from "swiper/modules";
+
+import CardBtn from "../../components/common/btn/CardBtn";
 
 function CartRelated() {
   return (
@@ -24,7 +26,7 @@ function CartRelated() {
           {cartItems.map((item) => {
             return (
               <SwiperSlide className="card-swiper-slide" key={item.id}>
-                <SingleCartRelated item={item} midClass="related"/>
+                <SingleCartRelated item={item} midClass="related" />
               </SwiperSlide>
             );
           })}
@@ -42,7 +44,7 @@ function CartRelatedDesktop() {
         </p>
         <ul className="cart-related-list">
           {cartItems.map((item) => {
-            return <SingleCartRelated item={item} midClass="related" />;
+            return <SingleCartRelated item={item} midClass="related" />
           })}
         </ul>
       </div>
@@ -50,7 +52,13 @@ function CartRelatedDesktop() {
   );
 }
 
-function SingleCartRelated({ item, midClass }: { item: any, midClass: string}) {
+function SingleCartRelated({
+  item,
+  midClass,
+}: {
+  item: any;
+  midClass: string;
+}) {
   return (
     <div className={`cart-${midClass}-single`}>
       <div className="single_image">
@@ -65,12 +73,10 @@ function SingleCartRelated({ item, midClass }: { item: any, midClass: string}) {
         <div className="single_details_price">
           $<strong>{item.price}</strong>
         </div>
-        <div className="single_details_btn">
-          <button className="CardBtn single_details_btn">Add to cart</button>
-        </div>
+     <CardBtn className="CardBtn primary" style={{fontSize:"1.5rem", width:"100%"}}>Add To Cart</CardBtn>
       </div>
     </div>
   );
 }
 
-export { CartRelated, CartRelatedDesktop,SingleCartRelated };
+export { CartRelated, CartRelatedDesktop, SingleCartRelated };

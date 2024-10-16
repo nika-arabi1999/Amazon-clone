@@ -1,16 +1,21 @@
-import { product } from "../../../product"; 
+import { useContext } from "react";
+import { product } from "../../../product";
 import "./ProductDetails.scss";
+import { ProductContext } from "../../..";
+import DOMPurify from "dompurify";
+
 function ProductDetails() {
+  const { product } = useContext(ProductContext);
   return (
     <div className="product-info_details">
-      <DetailsTitle />
-      <DetailsPrice />
-      <DetailsDescription />
+      <DetailsTitle product={product} />
+      <DetailsPrice product={product} />
+      <DetailsDescription product={product} />
     </div>
   );
 }
 
-function DetailsTitle() {
+function DetailsTitle({ product }) {
   return (
     <div className="details_title">
       <span className="details_title_name">{product.name}</span>
@@ -27,17 +32,20 @@ function DetailsTitle() {
   );
 }
 
-function DetailsPrice() {
-  return <div className="details_price">87$</div>;
+function DetailsPrice({ product }) {
+  return (
+    <div className="details_price">{product.price.formatted_with_symbol}</div>
+  );
 }
 
-function DetailsDescription() {
+function DetailsDescription({ product }) {
+  // Sanitize the HTML description
+  const sanitizedDescription = DOMPurify.sanitize(product.description);
+
   return (
     <div className="details_description">
-      Note: Products with electrical plugs are designed for use in the US.
-      Outlets and voltage differ internationally and this product may require an
-      adapter or converter for use in your destination. Please check
-      compatibility before purchasing.
+      {/* Render the sanitized HTML */}
+      <div dangerouslySetInnerHTML={{ __html: sanitizedDescription }} />
     </div>
   );
 }

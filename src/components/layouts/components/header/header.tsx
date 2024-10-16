@@ -3,14 +3,13 @@ import { Search } from "@mui/icons-material";
 import MenuIcon from "@mui/icons-material/Menu";
 import PersonIcon from "@mui/icons-material/Person";
 import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
+import { useGetCartQuery } from "../../../../services/dashboardApi";
 export default function Header({
   setShowSheet,
 }: {
   setShowSheet: React.Dispatch<React.SetStateAction<boolean>>;
 }) {
-  // const openSheet = () => {
-  //   setShowSheet(true);
-  // };
+  const { data: cart} = useGetCartQuery("cart_ypbroEGWOVl8n4");
   return (
     <nav className="nav">
       <div className="nav_row nav_row__up">
@@ -33,7 +32,8 @@ export default function Header({
           <a href="#">
             <PersonIcon sx={{ fontSize: 35 }} />
           </a>
-          <a href="#">
+          <a href="#" className="cart-icon">
+            {cart?.total_items ?  <span className="cart-span">{cart?.total_items}</span> : ""}
             <ShoppingCartOutlinedIcon sx={{ fontSize: 35 }} />
           </a>
         </div>

@@ -1,9 +1,10 @@
-.producs-main{
+.products-main{
   position: relative;
   width: 100%;
   height: 100%;
   display: flex;
   flex-direction: row;
+  background: #fff;
   
 
 }
@@ -22,7 +23,7 @@
     justify-content: space-between;
     align-items: center;
     padding: 0 1rem;
-    background: #eeeeee;
+    
     &_toggle {
 
     }
@@ -50,9 +51,13 @@
  background: #ffffff;
  box-sizing: border-box;
  width: 100%;
- height: 400px;
- border: 1px solid rebeccapurple;
+ height: auto;
+ border: 1px solid rgb(214, 214, 214);
+ border-radius: 3px;
  padding: 1.5rem;
+ display: flex;
+ flex-direction: column;
+ justify-content: space-between;
  &-details{
     display: flex;
     flex-direction: column;
@@ -67,10 +72,13 @@
     overflow: hidden;
     text-overflow: ellipsis;
     text-align: left;
+    color: #000;
+    font-weight: bold;
  }
  &_image {
 
     width: 100%;
+   
     img {
         max-width: 100%;
         height: 170px;

@@ -1,7 +1,7 @@
-import CartItems from "./CartItems";
-import { CartRelated, CartRelatedDesktop } from "./CartRelated";
+import CartItems from "./cartItems/CartItems";
+import { CartRelatedDesktop } from "./CartRelated";
 
-import SavedItems from "./SavedItems";
+import SavedItems from "./cartSaved/SavedItems";
 import SubTotal from "./SubTotal";
 import "./cart.scss";
 import CartRecent from "./CartRecent";
@@ -12,12 +12,7 @@ function Cart() {
   return (
     <div className="cart">
       {/* ___________content___________ */}
-      {isMobile ?  <CartContent /> : <CartContentDesktop /> };
-
-      {/* ___________recent___________ */}
-      <div className="cart-recent">
-        <CartRecent />
-      </div>
+      {isMobile ? <CartContent /> : <CartContentDesktop />}
     </div>
   );
 }

@@ -9,6 +9,26 @@
   background: #222f3e;
   color: aliceblue;
   font-size: 1.7rem;
+  a{
+    color: aliceblue;
+  }
+  .cart-icon {
+    position: relative;
+  }
+  .cart-span {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    top:-8px;
+    right: -5px;
+    background: rgb(255, 199, 31);
+    width: 23px;
+    height: 23px;
+    text-align: center;
+    border-radius: 50%;
+    color: #222f3e;
+  }
   &_row {
 
     display: flex;

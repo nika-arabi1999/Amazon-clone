@@ -16,7 +16,7 @@ import {
   updateItemInCartCredentials,
   variant,
 } from "./types";
-
+type myType = { cart_id: string; line_item_id: string };
 export const dashboardApi = createApi({
   reducerPath: "dashboardApi",
   baseQuery: fetchBaseQuery({
@@ -142,10 +142,7 @@ export const dashboardApi = createApi({
         method: "DELETE",
       }),
     }),
-    removeItemFromCart: builder.mutation<
-      getCartsResponse,
-      { cart_id: string; line_item_id: string }
-    >({
+    removeItemFromCart: builder.mutation<getCartsResponse, myType>({
       query: ({ cart_id, line_item_id }) => ({
         url: `/carts/${cart_id}/items/${line_item_id}`,
         method: "DELETE",

@@ -5,8 +5,6 @@
     width: 100%;
     font-size: 2.3rem;
     text-align: start;
-    // background: #EAEDED;
-    
     box-sizing: border-box;
     &-part {
         border-bottom: 1px solid lightgray;
@@ -45,123 +43,7 @@
         }
     }
 
-    &-items, &-saved {
-        width: 100%;
-        text-align: start;
-        display: flex;
-        flex-direction: column;
-        &_title {
-            padding-bottom: 2rem;
-            border-bottom: 1px solid lightgray;
-            margin: 1.1rem;
-        }
-        &_list {
-            width: 100%;
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-            
-        }
-        &_subtotal {
-            text-align: end;
-            font-weight: 500;
-            .price-number {
-                font-weight: 700;
-            }
-
-        }
-    }
-
-    &-item {
-        display: flex;
-        flex-direction: column;
-        align-items: start;
-        width: 100%;
-        border-bottom: 1px solid lightgray;
-        padding: .5rem 0 1.5rem ;
-        .hidden-qty {
-            display: none;
-        }
-        &--info {
-            display: flex;
-            flex-direction: row;
-            gap: 10px;
-        }
-        &_image {
-            img {
-                height: 135px;
-                aspect-ratio: auto 135 / 135;
-                width: 135px;
-                object-fit: contain;
-                overflow-clip-margin: content-box;
-                overflow: clip;
-            }
-        }
-        &_details {
-            width: 100%;
-            display: flex;
-            flex-direction: column;
-            gap: 5px;
-            font-size: 1.5rem;
-        }
-        &--options{
-            width: 100%;
-            display: flex;
-            flex-direction: row;
-            align-items: start;
-            justify-content: start;
-            
-        }
-        &_delete{
-            width: 80px; 
-            
-        }
-        &_delete , &_saveLater , &_moveCart{
-            
-            height: 40px;
-            font-size: 1.5rem;
-            background: #fff;
-            padding: 10px 15px;
-            border: 1px solid black;
-            border-radius: 3rem;
-            box-sizing: border-box;
-            margin-right: 8px;
-            cursor: pointer;
-            &:active {
-                box-sizing: border-box;
-                border: 3px solid orange;
-            }
-        }
-
-        &_quantity {
-            width: 135px;
-            height: 40px;
-            position: relative;
-            box-sizing: border-box;
-            font-size: 1.7rem;
-            label {
-                position: absolute;
-                top: 50%;
-                transform: translateY(-50%);
-                
-                left: 23px;
-                z-index: 1000;
-            }
-            select {
-                width: 100px;
-                border-radius: 1rem;
-                padding-top:7px;
-                padding-bottom: 7px;
-                padding-left: 40px;
-                position: absolute;
-                top: 50%;
-                left: 50%;
-                transform: translate(-50%, -50%);
-                font-size: 1.7rem;
-            }
-        }
-        
-    }
+   
 
     &-related{
         width: 100%;
@@ -226,6 +108,9 @@
                         color: orange;
                         font-weight: bold;
                     }
+                    &_price {
+                        margin-bottom: 1rem;
+                    }
                 }
             }
         }
@@ -269,6 +154,7 @@
                     align-items: flex-start;
                     gap: 1.5px;
                     font-size: 1.5rem;
+                    background: #000;
                     &_name {
                         width: 100%;
                         white-space: nowrap;
@@ -276,23 +162,14 @@
                         text-overflow: ellipsis;
                         
                     }
-                    &_btn {
-                        display: flex;
-                        flex-direction: column;
-                        justify-content: center;
-                        align-items: center;
-                        width: 100%;
-                        font-size: 1.2rem;
-                        margin-top: 5px;
-                        
-                        .CardBtn {
-                            width: 95%;
-                        }
+                  
                     }
                     &_stars{
                         color: orange;
                         font-weight: bold;
                     }
+                    &_price {
+                    margin-bottom: 1rem;
                 }
             }
         }
@@ -318,6 +195,14 @@
 
 .total-sup {
     font-size: 2rem;
+}
+
+.btn-div {
+    display: flex;
+    flex-direction: column;
+    &.row {
+        flex-direction: row;
+    }
 }
 
 // details of single cart related item:
@@ -356,58 +241,6 @@
                 width: 25%;
                 min-width: 240px;
             }
-        } 
-
-        &-items {
-    // width: 100%;
-        }
-
-        &-item {
-            &_quantity {
-                width: 110px;
-                label {
-                    left: 5px;
-                }
-                select {
-                    left:0;
-                    transform: translate(0, -50%);
-                }
-            }
-        }
-
-        &-saved {
-         &_list {
-            flex-direction: row;
-            flex-wrap: wrap;
-            box-sizing: border-box;
-            padding: 1rem;
-        }
-         .cart-item_quantity {
-            display: none;
-          }
-          .cart-item {
-            box-sizing: border-box;
-            padding: 1.3rem;
-            border: 1px solid #c2c2c2;
-            width: 220px;
-            
-            &--info{
-                flex-direction: column;
-                margin-bottom: 1.5rem;
-            }
-            &--options {
-                .btn-div {
-                    display: flex;
-                    flex-direction: column;
-                    gap:1.2rem;
-                    width: 100%;
-                    button {
-                        width: 100%;
-                    }
-                }
-            }
-          }
-          
         } 
 
         &-related {

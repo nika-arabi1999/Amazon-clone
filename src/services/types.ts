@@ -64,7 +64,7 @@ export type assetType = {
     products: number;
     created: number;
     updated: number;
-    meta: {
+    meta?: {
       season: string;
     };
     assets: any[];
