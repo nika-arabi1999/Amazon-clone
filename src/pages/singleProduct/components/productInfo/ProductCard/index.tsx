@@ -1,32 +1,32 @@
 import { LocationOnOutlined } from "@mui/icons-material";
 import "./ProducrCard.scss";
-import { ProductContext } from "../../..";
-import { useContext, useState } from "react";
-import {
-  useAddItemToCartMutation,
-  useGetCartQuery,
-} from "../../../../../services/dashboardApi";
 
 import CardBtn from "../../../../../components/common/btn/CardBtn";
-function ProductCard() {
+import { useState } from "react";
+import { Product } from "../../../../../services/types";
+import { mockApi } from "../../../../../services/mockApi";
+import { useZustandStore } from "../../../../../services/store";
+function AddProductCard({ product }: { product: Product }) {
   const [quantity, setQuantity] = useState<number>(1);
-  const { product } = useContext(ProductContext);
-  const { data: cart, refetch: refetchCart } = useGetCartQuery(
-    "cart_ypbroEGWOVl8n4"
-  );
-  console.log("cd1:", cart);
-
-  const [addToCart, { data, isLoading, error }] = useAddItemToCartMutation();
-  function addToCartHandler() {
-    if (!product) return;
-    addToCart({
-      cart_id: "cart_ypbroEGWOVl8n4",
-      body: { id: product.id, quantity },
-    })
-      .unwrap()
-      .then(() => {
-        refetchCart();
-      v});
+  const setCart = useZustandStore((state) => state.setCart);
+  const setSaved = useZustandStore((state) => state.setSaved);
+  async function addToCartHandler() {
+    const updatedCart = await mockApi.addItemToCart({
+      body: {
+        id: product.id,
+        quantity: quantity || 1,
+      },
+    });
+    setCart(updatedCart);
+  }
+  async function addToSavedHandler() {
+    const updatedSaved = await mockApi.addItemToSaved({
+      body: {
+        id: product.id,
+        quantity: 1,
+      },
+    });
+    setSaved(updatedSaved);
   }
 
   return (
@@ -48,7 +48,7 @@ function ProductCard() {
           name="quantity"
           id="90"
           className="card-quantitiy_select"
-          value={quantitiy}
+          value={quantity}
           onChange={(e) => setQuantity(Number(e.target.value))}
         >
           <option value={1}>1</option>
@@ -69,11 +69,15 @@ function ProductCard() {
         </CardBtn>
       </div>
 
-      <CardBtn className="CardBtn secondary" style={{ width: "100%" }}>
+      <CardBtn
+        className="CardBtn secondary"
+        style={{ width: "100%" }}
+        onClick={addToSavedHandler}
+      >
         Add To List
       </CardBtn>
     </div>
   );
 }
 
-export default ProductCard;
+export default AddProductCard;

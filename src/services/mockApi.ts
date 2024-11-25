@@ -1,4 +1,4 @@
-import { carts, categories, products } from "./staticData";
+import { categories, products } from "./staticData";
 import {
   addToCartCredentials,
   category,
@@ -53,34 +53,29 @@ export const mockApi = {
     if (!cart) throw new Error("Cart not found");
     return cart;
   },
-
+// cart:
   async addItemToCart({
-    cart_id,
     body,
   }: addToCartCredentials): Promise<getCartsResponse> {
     await delay(3000);
-    const cart = carts.find((cart) => cart.id === cart_id);
+    const cart = JSON.parse(localStorage.getItem("cart") || "null");
     if (!cart) throw new Error("Cart not found");
     const product = products.find((prod) => prod.id === body.id);
     if (!product) throw new Error("Product not found");
-    cart.line_items.push(product);
+    const existing = cart.line_items.find(
+      (prod) => prod.product.id === body.id
+    );
+    if (existing) {
+      existing.quantity += body.quantity;
+      cart.total_items += body.quantity || 1;
+      return cart;
+    }
+    cart.line_items.push({ product, quantity: body.quantity });
     cart.total_items += body.quantity || 1;
     return cart;
   },
 
-  async updateItemInCart({
-    cart_id,
-    line_item_id,
-    body,
-  }: updateItemInCartCredentials): Promise<getCartsResponse> {
-    await delay(3000);
-    const cart = carts.find((cart) => cart.id === cart_id);
-    if (!cart) throw new Error("Cart not found");
-    const item = cart.line_items.find((item) => item.id === line_item_id);
-    if (!item) throw new Error("Item not found");
-    item.quantity = body.quantity;
-    return cart;
-  },
+ 
 
   async removeItemFromCart({
     cart_id,
@@ -93,9 +88,35 @@ export const mockApi = {
     const cart = carts.find((cart) => cart.id === cart_id);
     if (!cart) throw new Error("Cart not found");
     cart.line_items = cart.line_items.filter(
-      (item) => item.id !== line_item_id
+      (item) => item.product.id !== line_item_id
     );
     cart.total_items = cart.line_items.length;
     return cart;
   },
+
+
+
+  //saved 
+  async addItemToSaved({
+    body,
+  }: addToCartCredentials): Promise<getCartsResponse> {
+    await delay(3000);
+    const saved = JSON.parse(localStorage.getItem("saved") || "null");
+    if (!saved) throw new Error("nothing saved yet!");
+    const product = products.find((prod) => prod.id === body.id);
+    if (!product) throw new Error("Product not found");
+    const existing = saved.line_items.find(
+      (prod) => prod.product.id === body.id
+    );
+    if (existing) {
+      existing.quantity += body.quantity;
+      saved.total_items += body.quantity || 1;
+      return saved;
+    }
+    saved.line_items.push({ product, quantity: body.quantity });
+    saved.total_items += body.quantity || 1;
+    return saved;
+  },
 };
+
+// saved 

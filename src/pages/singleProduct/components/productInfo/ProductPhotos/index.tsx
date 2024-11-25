@@ -1,10 +1,10 @@
-import SingleProductSwiper from "./SingleProductSwiper"; 
-import "./ProductPhotos.scss";
+import SingleProductSwiper from "./SingleProductSwiper";
+import { product } from "../../../../../services/types";
 
-function ProductPhotos() {
+function ProductPhotos({ product }: { product: product }) {
   return (
     <div className="product-info_photos">
-      <SingleProductSwiper/>
+      <SingleProductSwiper product={product} />
     </div>
   );
 }

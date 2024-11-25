@@ -1,0 +1,40 @@
+.sheet {
+  position: fixed;
+  z-index: 200000;
+  height: 100%;
+}
+.sheet-content {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  z-index: 2;
+  transition: all 280ms ease;
+}
+.sheet-content .close-box-icon {
+  position: absolute;
+  top: 2rem;
+  right: -6rem;
+  cursor: pointer;
+}
+.sheet-backdrop {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: rgba(0, 0, 0, 0.8);
+  width: 100vw;
+  height: 100%;
+}
+.sheet-close {
+  transform: translateX(-120%);
+}
+
+@media (min-width: 768px) {
+  .sheet-content {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 370px !important;
+  }
+}/*# sourceMappingURL=SidebarSheet.css.map */

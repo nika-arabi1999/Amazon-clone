@@ -1,5 +1,3 @@
-
-
 import { cartItems } from "../home/items";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Mousewheel, Navigation } from "swiper/modules";
@@ -12,12 +10,14 @@ function CartRecent() {
     <div className="cart-part cart-recent">
       {/* <SwiperCards title="also bought" swiperItems={cartItems}/> */}
       <div className="SwiperCards-container" style={{ width: "100%" }}>
-      <p style={{ fontSize: "2rem", fontWeight: "bold" }}>your recent views</p>
+        <p style={{ fontSize: "2rem", fontWeight: "bold" }}>
+          your recent views
+        </p>
         <Swiper
           modules={[Navigation, Mousewheel]}
           spaceBetween={0}
           direction={"horizontal"}
-          slidesPerView={isMobile ? 2.5 : isTablet ? 3.75 : 6.5} 
+          slidesPerView={isMobile ? 2.5 : isTablet ? 3.75 : 6.5}
           mousewheel={true}
           navigation={true}
           className="card-swiper"
@@ -34,8 +34,5 @@ function CartRecent() {
     </div>
   );
 }
-
-
-
 
 export default CartRecent;

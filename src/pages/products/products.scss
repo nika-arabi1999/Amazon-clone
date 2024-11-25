@@ -39,10 +39,11 @@
     }
  }
  &-items {
-    // width: 100%;
+    width: 100%;
     display: grid;
-   grid-template-columns: repeat(auto-fit, minmax(18rem,1fr));
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
    padding: 1rem;
+   box-sizing: border-box;
  }
  
 }
@@ -82,7 +83,7 @@
     img {
         max-width: 100%;
         height: 170px;
-        object-fit: cover;
+        object-fit: contain;
     }
  }
 }
@@ -147,7 +148,7 @@
          }
         
         &-items {
-            grid-template-columns: repeat(auto-fit, minmax(20rem,1fr));
+          grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
             gap: 1rem;
         }
        }
@@ -160,7 +161,7 @@
           }
          
          &-items {
-             grid-template-columns: repeat(auto-fit, minmax(25rem,1fr));
+          grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
              gap: 1rem;
          }
        }

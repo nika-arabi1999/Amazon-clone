@@ -1,32 +1,85 @@
-import React, { ChangeEvent, useState } from "react";
+import React, { ChangeEvent, useEffect, useState } from "react";
 import RangeSlider from "react-range-slider-input";
 import "react-range-slider-input/dist/style.css";
 import "./sidebar.scss";
+import { product } from "../../../services/types";
 
 function ProductsSideBar({
   brands,
   colors,
   price,
+  products,
+  setFilteredProducts,
 }: {
   brands: string[];
   colors: string[];
   price: number[];
+  products: product[];
+  setFilteredProducts: any;
 }) {
+  const [selectedBrands, setSelectedBrands] = useState([]);
+  const [selectedColors, setSelectedColors] = useState([]);
+  const [selectedPrice, setSelectedPrice] = useState([]);
+  console.log(selectedBrands, selectedColors, selectedPrice);
+
+  useEffect(() => {
+    const filterProducts = () => {
+      let filtered = products;
+
+      // Filter by brands if any are selected
+      if (selectedBrands.length > 0) {
+        filtered = filtered.filter((product) =>
+          selectedBrands.includes(product.variant.brand)
+        );
+      }
+
+      // Filter by colors if any are selected
+      if (selectedColors.length > 0) {
+        filtered = filtered.filter((product) =>
+          selectedColors.includes(product.variant.color)
+        );
+      }
+
+      // Filter by price range
+      if (selectedPrice.length > 1) {
+        filtered = filtered.filter(
+          (product) =>
+            product.price.raw >= selectedPrice[0] &&
+            product.price.raw <= selectedPrice[1]
+        );
+      }
+      console.log({ filtered });
+
+      // Update the filtered products state
+      setFilteredProducts(filtered);
+    };
+
+    filterProducts();
+  }, [selectedBrands, selectedColors, selectedPrice, products]);
+
   return (
     <div className="sidebar">
-      <div className="sidebar-box_department">
+      {/* <div className="sidebar-box_department">
         <div className="sidebar-box_title">department</div>
         <div className="sidebar-box_content">department</div>
       </div>
       <div className="sidebar-box_category">
         <div className="sidebar-box_title">category</div>
         <div className="sidebar-box_content">category</div>
-      </div>
+      </div> */}
 
       <StarRating />
-      <BrandsFilter brands={brands} />
-      <ColorsFilter colors={colors} />
-      <PriceSlider price={price} />
+      <BrandsFilter
+        brands={brands}
+        selectedBrands={selectedBrands}
+        setSelectedBrands={setSelectedBrands}
+      />
+      <ColorsFilter
+        colors={colors}
+        selectedColors={selectedColors}
+        setSelectedColors={setSelectedColors}
+      />
+      <PriceSlider price={price} setSelectedPrice={setSelectedPrice} />
       <div className="sidebar-box_seller">
         <div className="sidebar-box_title">seller</div>
         <div className="sidebar-box_content">seller</div>
@@ -35,41 +88,81 @@ function ProductsSideBar({
   );
 }
 
-function BrandsFilter({ brands }: { brands: string[] }) {
+function BrandsFilter({
+  brands,
+  selectedBrands,
+  setSelectedBrands,
+}: {
+  brands: string[];
+  selectedBrands: string[] | undefined;
+  setSelectedBrands: any;
+}) {
   return (
     <div className="sidebar-box_checkbox">
       <div className="sidebar-box_title">brands</div>
 
       <div className="sidebar-box_content">
-        {brands ? <CheckBoxGroup options={brands} /> : ""}
+        {brands ? (
+          <CheckBoxGroup
+            options={brands}
+            selectedInfo={selectedBrands}
+            setSelectedInfo={setSelectedBrands}
+          />
+        ) : (
+          ""
+        )}
       </div>
     </div>
   );
 }
-function ColorsFilter({ colors }: { colors: string[] }) {
+function ColorsFilter({
+  colors,
+  selectedColors,
+  setSelectedColors,
+}: {
+  colors: string[];
+  selectedColors: string[];
+  setSelectedColors: any;
+}) {
   return (
     <div className="sidebar-box_checkbox">
       <div className="sidebar-box_title">Colors</div>
       <div className="sidebar-box_content">
-        {colors ? <CheckBoxGroup options={colors} /> : ""}
+        {colors ? (
+          <CheckBoxGroup
+            options={colors}
+            selectedInfo={selectedColors}
+            setSelectedInfo={setSelectedColors}
+          />
+        ) : (
+          ""
+        )}
       </div>
     </div>
   );
 }
 
-function CheckBoxGroup({ options }: { options: any }) {
-  const [checkedItems, setCheckedItems] = useState<string[]>([]);
+function CheckBoxGroup({
+  options,
+  setSelectedInfo,
+  selectedInfo,
+}: {
+  options: any;
+  setSelectedInfo: any;
+  selectedInfo: any;
+}) {
+  // const [checkedItems, setCheckedItems] = useState<string[]>([]);
 
   const handleCheckboxChange = (event: ChangeEvent<HTMLInputElement>) => {
     const { value, checked } = event.target;
 
     if (checked) {
-      setCheckedItems((prev) => [...prev, value]);
+      setSelectedInfo((prev) => [...prev, value]);
     } else {
-      setCheckedItems((prev) => prev.filter((item) => item !== value));
+      setSelectedInfo((prev) => prev.filter((item) => item !== value));
     }
   };
-  console.log(checkedItems);
+
   return (
     <div>
       {options.map((option: any) => (
@@ -79,6 +172,7 @@ function CheckBoxGroup({ options }: { options: any }) {
               type="checkbox"
               onChange={(e) => handleCheckboxChange(e)}
               value={option}
+              checked={selectedInfo.includes(option)}
             />
             {option}
           </label>
@@ -99,20 +193,30 @@ export const StarRating = () => {
   );
 };
 
-export const PriceSlider = ({ price }: { price: number[] }) => {
+export const PriceSlider = ({
+  price,
+  setSelectedPrice,
+}: {
+  price: number[];
+  setSelectedPrice: any;
+}) => {
   console.log(price);
-  const [value, setValue] = React.useState<number[]>([20, 37]);
-  function valuetext(value: number) {
-    return `${value}°C`;
-  }
-  const handleChange = (event: Event, newValue: number | number[]) => {
-    setValue(newValue as number[]);
-  };
   return (
     <div className="sidebar-box_price" style={{ width: "100%" }}>
       <div className="sidebar-box_title">Price</div>
       <div className="sidebar-box_content" style={{ width: "100%" }}>
-        {price ? <RangeSlider min={99} max={1179} defaultValue={[99,1179]}/> : "..."}
+        {price ? (
+          <RangeSlider
+            min={99}
+            max={1179}
+            defaultValue={[99, 1179]}
+            onInput={(e) => {
+              setSelectedPrice(e);
+            }}
+          />
+        ) : (
+          "..."
+        )}
       </div>
     </div>
   );

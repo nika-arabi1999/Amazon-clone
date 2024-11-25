@@ -1,0 +1,26 @@
+.CardBtn {
+  font-size: 2rem;
+  padding: 1.2rem;
+  border-radius: 3rem;
+  cursor: pointer;
+  box-shadow: 0 2px 5px 0 rgba(213, 217, 217, 0.5);
+}
+.CardBtn.primary {
+  background: #ffd000;
+  border: none;
+}
+.CardBtn.secondary {
+  background: #fff;
+  border-radius: 0.5rem;
+  border: 1px solid #000;
+}
+.CardBtn.white {
+  background: #fff;
+  border: 1px solid #000;
+}
+.CardBtn:active {
+  outline: 5px solid #8becff;
+}
+.CardBtn:hover {
+  filter: brightness(97%);
+}/*# sourceMappingURL=CardBtn.css.map */

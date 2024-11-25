@@ -1,0 +1,142 @@
+.products-main {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+  background: #fff;
+}
+
+.products {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  font-size: 1.4rem;
+}
+.products-setting {
+  box-sizing: border-box;
+  width: 100%;
+  height: 5rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 1rem;
+}
+.products-setting_sort .select-sort {
+  padding: 0.7rem 3rem;
+  border: 2px solid #eeeeee;
+  border-radius: 1rem;
+}
+.products-setting_sort .select-sort:focus {
+  outline: 0;
+}
+.products-items {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  padding: 1rem;
+  box-sizing: border-box;
+}
+
+.product-card {
+  background: #ffffff;
+  box-sizing: border-box;
+  width: 100%;
+  height: auto;
+  border: 1px solid rgb(214, 214, 214);
+  border-radius: 3px;
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.product-card-details {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  margin-top: 30px;
+}
+.product-card_name {
+  width: 100%;
+  height: 40px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  text-align: left;
+  color: #000;
+  font-weight: bold;
+}
+.product-card_image {
+  width: 100%;
+}
+.product-card_image img {
+  max-width: 100%;
+  height: 170px;
+  -o-object-fit: contain;
+     object-fit: contain;
+}
+
+/* CSS */
+.toggle-sidebar {
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  background-color: #222f3e;
+  border: 2px solid #222f3e;
+  border-radius: 15px;
+  box-sizing: border-box;
+  color: #FFFFFF;
+  cursor: pointer;
+  display: inline-block;
+  font-family: Roobert, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  font-size: 16px;
+  font-weight: 600;
+  line-height: normal;
+  margin: 0;
+  min-height: 97%;
+  min-width: 0;
+  outline: none;
+  padding: 6px 12px;
+  text-align: center;
+  text-decoration: none;
+  transition: all 300ms cubic-bezier(0.23, 1, 0.32, 1);
+  -moz-user-select: none;
+       user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  width: 100%;
+  will-change: transform;
+}
+
+.toggle-sidebar:disabled {
+  pointer-events: none;
+}
+
+.toggle-sidebar:hover {
+  box-shadow: rgba(0, 0, 0, 0.25) 0 2px 4px;
+  transform: translateY(-2px);
+}
+
+.toggle-sidebar:active {
+  box-shadow: none;
+  transform: translateY(0);
+}
+
+@media (min-width: 768px) {
+  .products-setting .toggle-sidebar {
+    display: none;
+  }
+  .products-items {
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 1rem;
+  }
+}
+@media (min-width: 1024px) {
+  .products-items {
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 1rem;
+  }
+}/*# sourceMappingURL=products.css.map */

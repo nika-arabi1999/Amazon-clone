@@ -11,9 +11,12 @@
         padding:17px;
         box-sizing: border-box;
         &_photos {
-            width: 80%;
+            width: 95%;
             box-sizing: border-box;
               
+        }
+        &_details {
+            width: 95%;
         }
     }
 
@@ -38,13 +41,18 @@
 @media (min-width: 768px) {
     .product{
         &-info {
+            width: 100%;
             flex-direction: row;
             box-sizing: border-box;
             align-items: flex-start;
-            gap: 4rem;
+            justify-content: space-between;
+            gap:5rem;
             &_details {
                 flex-basis: auto;
                 min-width: 15rem;
+            }
+            &_photos {
+                max-width: 500px;
             }
         }
         &-reviews {

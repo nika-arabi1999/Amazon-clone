@@ -1,11 +1,11 @@
 import { useContext } from "react";
-import { product } from "../../../product";
+
 import "./ProductDetails.scss";
 import { ProductContext } from "../../..";
 import DOMPurify from "dompurify";
 
-function ProductDetails() {
-  const { product } = useContext(ProductContext);
+function ProductDetails({product}) {
+  
   return (
     <div className="product-info_details">
       <DetailsTitle product={product} />
@@ -40,7 +40,7 @@ function DetailsPrice({ product }) {
 
 function DetailsDescription({ product }) {
   // Sanitize the HTML description
-  const sanitizedDescription = DOMPurify.sanitize(product.description);
+  const sanitizedDescription = DOMPurify.sanitize(product.variant.description);
 
   return (
     <div className="details_description">

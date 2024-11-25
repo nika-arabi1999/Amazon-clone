@@ -7,7 +7,7 @@ const Cart = React.lazy(() => import("../pages/cart"));
 //route arrays
 export const homeRoutes = [
   { path: "/", element: Home },
-  { path: "/singleProduct/:slug", element: SingleProduct },
+  { path: "/singleProduct/:product_id", element: SingleProduct },
   { path: "/cart", element: Cart},
   { path: "/products/:category_id", element: Products }
 ];

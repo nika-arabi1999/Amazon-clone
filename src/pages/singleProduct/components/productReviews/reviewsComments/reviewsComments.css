@@ -1,0 +1,62 @@
+.reviews-comments {
+  display: flex;
+  flex-direction: column;
+  gap: 5rem;
+}
+
+.comment {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  font-size: 1.5rem;
+  width: 100%;
+}
+.comment_part {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  text-align: start;
+  align-items: center;
+}
+.comment_rating {
+  font-weight: bold;
+}
+.comment_rating__stars {
+  color: orange;
+  font-size: 1.7rem;
+}
+.comment_date, .comment_helpfulNumber {
+  color: rgb(85, 85, 85);
+}
+.comment_btns {
+  align-items: center;
+}
+.comment_btns__helpful {
+  box-shadow: 0 2px 5px 0 rgba(213, 217, 217, 0.5);
+  background: #fff;
+  border: 1px solid #d5d9d9;
+  border-radius: 1rem;
+  cursor: pointer;
+  display: inline-block;
+  padding: 10px 15px;
+  text-align: center;
+  text-decoration: none !important;
+  vertical-align: middle;
+}
+.comment_btns__report {
+  display: flex;
+  align-items: center;
+  border-left: 1px solid gray;
+  padding-left: 10px;
+}
+
+@media (min-width: 768px) {
+  .comment {
+    width: 100%;
+  }
+}
+@media (min-width: 1024px) {
+  .comment {
+    width: 60%;
+  }
+}/*# sourceMappingURL=reviewsComments.css.map */

@@ -13,7 +13,9 @@ function Products() {
   const [showFilters, setShowFilters] = useState(false);
   const [isMobile, isTablet] = useResizeWindow();
   const [products, setProducts] = useState([]);
+  const [filteredProducts, setFilteredProducts] = useState([]);
   const [loading, setLoading] = useState(true);
+  console.log({ filteredProducts });
   const [error, setError] = useState(false);
   const { category_id } = useParams();
   // const [brands, setBrands] = useState([]);
@@ -45,6 +47,7 @@ function Products() {
           category_id: category_id,
         });
         setProducts(products);
+        setFilteredProducts(products);
       } catch (err) {
         setError(err.message);
       } finally {
@@ -53,8 +56,6 @@ function Products() {
     };
     fetchProducts(category_id);
   }, [category_id]);
-
-  console.log(brands);
 
   return (
     <div className="products-main">
@@ -68,6 +69,8 @@ function Products() {
             brands={brands}
             colors={colors}
             price={[minPrice, maxPrice]}
+            products={products}
+            setFilteredProducts={setFilteredProducts}
           />
         </SidebarSheet>
       ) : (
@@ -75,6 +78,8 @@ function Products() {
           brands={brands}
           colors={colors}
           price={[minPrice, maxPrice]}
+          products={products}
+          setFilteredProducts={setFilteredProducts}
         />
       )}
 
@@ -99,7 +104,7 @@ function Products() {
           "is loading..."
         ) : (
           <div className="products-items">
-            {products?.map((product, index) => {
+            {filteredProducts?.map((product, index) => {
               return <ProductCard product={product} key={index} />;
             })}
           </div>
@@ -115,7 +120,7 @@ export function ProductCard({ product }: { product: product }) {
       {/* image */}
       <div className="product-card_image">
         <Link to={`/singleProduct/${product.id}`}>
-          <img src={`${product.image.source}`} alt="image" />
+          <img src={`${product.image[0].source}`} alt="image" />
         </Link>
       </div>
 

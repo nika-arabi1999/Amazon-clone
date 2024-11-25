@@ -1,12 +1,11 @@
 import { Swiper, SwiperSlide } from "swiper/react";
 
-
-import { ProductCard } from "../../../products";
 import { Mousewheel, Navigation } from "swiper/modules";
-import { useContext, useEffect, useState } from "react";
-import { ProductContext } from "../..";
+import { useEffect, useState } from "react";
+import { ProductCard } from "../../../products";
+
 // import
-function ProductRelated() {
+function ProductRelated({ relatedProducts }) {
   return (
     <div>
       <h3
@@ -14,14 +13,12 @@ function ProductRelated() {
       >
         people also bought :
       </h3>
-      <SwiperRelatedItems />
+      <SwiperRelatedItems relatedProducts={relatedProducts} />
     </div>
   );
 }
 
-export function SwiperRelatedItems() {
-
-  const { product } = useContext(ProductContext);
+export function SwiperRelatedItems({ relatedProducts }) {
   const [slidesPerView, setSlidesPerView] = useState(getSlidesPerView());
 
   function getSlidesPerView() {
@@ -39,24 +36,27 @@ export function SwiperRelatedItems() {
   }, []);
   return (
     <div className="">
-      <Swiper
-        modules={[Navigation, Mousewheel]}
-        spaceBetween={10}
-        direction={"horizontal"}
-        slidesPerView={slidesPerView}
-        mousewheel={true}
-        navigation={true}
-        className="card-swiper"
-      >
-        {product?.related_products.map((product, index) => {
-          return (
-            <SwiperSlide style={{ fontSize: "1.6rem" }} key={index}>
-              <ProductCard product={product} />
-            </SwiperSlide>
-          );
-        })}
-        {/* <SwiperSlide></SwiperSlide> */}
-      </Swiper>
+      {relatedProducts ? (
+        <Swiper
+          modules={[Navigation, Mousewheel]}
+          spaceBetween={10}
+          direction={"horizontal"}
+          slidesPerView={slidesPerView}
+          mousewheel={true}
+          navigation={true}
+          className="card-swiper"
+        >
+          {relatedProducts?.map((product, index) => {
+            return (
+              <SwiperSlide style={{ fontSize: "1.6rem" }} key={index}>
+                <ProductCard product={product} />
+              </SwiperSlide>
+            );
+          })}
+        </Swiper>
+      ) : (
+        ""
+      )}
     </div>
   );
 }

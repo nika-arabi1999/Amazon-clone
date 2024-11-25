@@ -1,0 +1,22 @@
+.information-table {
+  width: 100%;
+  padding: 0;
+  border-collapse: collapse;
+  font-size: 1.6rem;
+}
+
+.th-column {
+  text-align: start;
+  padding: 7px 10px;
+  border-width: 1px 0;
+  border-style: solid;
+  border-color: #000;
+  border-collapse: collapse;
+  margin: 0;
+}
+.th-column_1 {
+  background: #eff2f2;
+}
+.th-column_2 {
+  background: #fff;
+}/*# sourceMappingURL=productTable.css.map */

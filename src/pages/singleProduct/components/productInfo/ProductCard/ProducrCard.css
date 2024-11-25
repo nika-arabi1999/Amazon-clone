@@ -1,0 +1,64 @@
+.card {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: 2rem;
+  border: 1px solid #aeaeae;
+  border-radius: 1.3rem;
+  margin-top: 10px;
+  padding: 1rem;
+  font-size: 1.8rem;
+}
+.card-price {
+  font-weight: bold;
+}
+.card-return {
+  color: #017185;
+}
+.card-return:hover {
+  text-decoration: underline;
+  color: rgb(158, 69, 0);
+}
+.card-quantitiy {
+  width: 100%;
+  text-align: start;
+  margin-bottom: 10px;
+}
+.card-quantitiy_select {
+  width: 100%;
+  height: 3.5rem;
+  margin-top: 5px;
+  padding-left: 5px;
+}
+.card-add-to-cart {
+  width: 100%;
+}
+.card-add-to-list {
+  border-top: 1px solid #b9b9b9;
+  padding: 1.5rem 0 1rem;
+  width: 100%;
+}
+.card-add-to-list button {
+  width: 100%;
+  padding: 1rem;
+  font-size: 2rem;
+  border: 1px solid #000;
+  border-radius: 1rem;
+  background: #ffffff;
+  box-shadow: 0 2px 5px 0 rgba(213, 217, 217, 0.7);
+}
+.card-add-to-list button:active {
+  outline: 5px solid #8becff;
+}
+.card-add-to-list button:hover {
+  filter: brightness(97%);
+}
+
+@media (min-width: 768px) {
+  .card {
+    box-sizing: border-box;
+    max-width: 300px;
+  }
+}/*# sourceMappingURL=ProducrCard.css.map */
