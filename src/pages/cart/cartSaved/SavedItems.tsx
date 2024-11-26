@@ -1,14 +1,16 @@
 import CardBtn from "../../../components/common/btn/CardBtn";
-import { cartItems } from "../../home/items";
+import { useZustandStore } from "../../../services/store";
+
 import CartItem from "../cartItems/CartItem";
 
 function SavedItems() {
+  const saved = useZustandStore((state) => state.saved);
   return (
     <div className="cart-part cart-saved">
       <h3 className="cart-saved_title">Saved for later</h3>
       <div className="cart-saved_list">
-        {cartItems.map((cartItem) => {
-          return <CartItem product={cartItem} />;
+        {saved.line_items.map((cartItem) => {
+          return <CartItem product={cartItem.product} />;
         })}
       </div>
     </div>

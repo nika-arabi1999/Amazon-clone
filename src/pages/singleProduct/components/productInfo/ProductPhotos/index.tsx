@@ -1,5 +1,5 @@
 import SingleProductSwiper from "./SingleProductSwiper";
-import { product } from "../../../../../services/types";
+// import { product } from "../../../../../services/types";
 
 function ProductPhotos({ product }: { product: product }) {
   return (

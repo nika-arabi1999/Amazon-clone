@@ -2,9 +2,6 @@ import ImageGallery from "react-image-gallery";
 
 //style
 import "react-image-gallery/styles/scss/image-gallery.scss";
-import { useContext } from "react";
-import { ProductContext } from "../../..";
-
 function SingleProductSwiper({product}) {
  
 

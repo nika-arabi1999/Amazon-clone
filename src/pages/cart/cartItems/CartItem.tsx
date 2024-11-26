@@ -1,32 +1,34 @@
 import CardBtn from "../../../components/common/btn/CardBtn";
-import {
-  useAddItemToCartMutation,
-  useRemoveItemFromCartMutation,
-} from "../../../services/dashboardApi";
+import { Product } from "../../../services/types";
 
-export default function CartItem({ product }: { product: any }) {
-  const [addToCart, {}] = useAddItemToCartMutation();
-  const [removeItem, {}] = useRemoveItemFromCartMutation();
-  const onQuantityChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    addToCart({
-      cart_id: "cart_ypbroEGWOVl8n4",
-      body: {
-        id: product?.id,
-        quantity: Number(e.target.value),
-      },
-    });
-  };
+export default function CartItem({ product }: { product: Product }) {
+  // const [addToCart, {}] = useAddItemToCartMutation();
+  // const [removeItem, {}] = useRemoveItemFromCartMutation();
+  // const onQuantityChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+  //   addToCart({
+  //     cart_id: "cart_ypbroEGWOVl8n4",
+  //     body: {
+  //       id: product?.id,
+  //       quantity: Number(e.target.value),
+  //     },
+  //   });
+  // };
+  // const onRemoveItem = () => {
+  //   removeItem({
+  //     cart_id: "cart_ypbroEGWOVl8n4",
+  //     line_item_id: product?.id,
+  //   });
+  // };
   const onRemoveItem = () => {
-    removeItem({
-      cart_id: "cart_ypbroEGWOVl8n4",
-      line_item_id: product?.id,
-    });
+    console.log("onRemoveItem");
   };
+  console.log("hoy", product.image[0]);
+
   return (
     <div className="cart-item">
       <div className="cart-item--info">
         <div className="cart-item_image">
-          <img src={`${product?.image}`} alt="" />
+          <img src={`${product.image[0].source}`} alt="" />
         </div>
         <div className="cart-item_details">
           <div className="details_name">{product?.name}</div>
@@ -38,7 +40,7 @@ export default function CartItem({ product }: { product: any }) {
                 name="quantity"
                 id="10"
                 className={`qty-select`}
-                onChange={onQuantityChange}
+                // onChange={onQuantityChange}
               >
                 <option value="1">1</option>
                 <option value="2">2</option>
@@ -58,7 +60,7 @@ export default function CartItem({ product }: { product: any }) {
             name="quantity"
             id="10"
             className={`qty-select`}
-            onChange={onQuantityChange}
+            // onChange={onQuantityChange}
           >
             <option value="1">1</option>
             <option value="2">2</option>
