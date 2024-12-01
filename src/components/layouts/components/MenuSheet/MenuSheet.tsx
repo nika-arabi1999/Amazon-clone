@@ -52,7 +52,7 @@ function MenuSheet() {
 
 
 
-  console.log(categories);
+
 
   return (
     <div className="menu">

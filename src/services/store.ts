@@ -17,7 +17,7 @@ export const useZustandStore = create((set) => ({
     set({ cart });
   },
   saved: getSaved(),
-  setSaved : (saved) => {
+  setSaved: (saved) => {
     localStorage.setItem("saved", JSON.stringify(saved));
     set({ saved });
   },
@@ -49,14 +49,9 @@ function getSaved() {
   console.log({ saved });
   if (!saved) {
     const initialSaved = {
-      id: "cart_35846",
+      id: "cart_35840",
       total_items: 0,
-      subtotal: 0,
       line_items: [],
-      currency: {
-        code: "USD",
-        symbol: "$",
-      },
     };
     localStorage.setItem("saved", JSON.stringify(initialSaved));
     return initialSaved;

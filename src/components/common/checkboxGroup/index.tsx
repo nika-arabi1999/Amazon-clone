@@ -56,7 +56,7 @@ interface CheckboxGroupProps {
   // Example usage
   const App: React.FC = () => {
     const handleGroupChange = (checkedValues: string[]) => {
-      console.log('Checked values:', checkedValues);
+      
     };
   
     return (

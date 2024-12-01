@@ -1,6 +1,16 @@
 
 
-
+.cart {
+    &-saved {
+        &_list {
+            p{
+                width: 100%;
+                display: flex;
+                justify-content: center;
+            }
+        }
+    }
+}
 
 
 @media (min-width: 768px) {

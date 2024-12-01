@@ -4,6 +4,7 @@ import MenuIcon from "@mui/icons-material/Menu";
 import PersonIcon from "@mui/icons-material/Person";
 import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
 import { useZustandStore } from "../../../../services/store";
+import { useNavigate } from "react-router-dom";
 
 export default function Header({
   setShowSheet,
@@ -13,7 +14,7 @@ export default function Header({
   // const { data: cart} = useGetCartQuery("cart_ypbroEGWOVl8n4");
   const cart = useZustandStore((state) => state.cart);
   console.log(cart);
-  
+  const navigate = useNavigate();
 
   return (
     <nav className="nav">
@@ -43,7 +44,10 @@ export default function Header({
             ) : (
               ""
             )}
-            <ShoppingCartOutlinedIcon sx={{ fontSize: 35 }} />
+            <ShoppingCartOutlinedIcon
+              sx={{ fontSize: 35 }}
+              onClick={() => navigate("/cart")}
+            />
           </a>
         </div>
       </div>

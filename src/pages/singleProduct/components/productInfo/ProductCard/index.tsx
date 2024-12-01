@@ -4,25 +4,31 @@ import "./ProducrCard.scss";
 import CardBtn from "../../../../../components/common/btn/CardBtn";
 import { useState } from "react";
 import { Product } from "../../../../../services/types";
-import { mockApi } from "../../../../../services/mockApi";
 import { useZustandStore } from "../../../../../services/store";
+import { mockApi } from "../../../../../services/mockApi";
+
 function AddProductCard({ product }: { product: Product }) {
   const [quantity, setQuantity] = useState<number>(1);
-  const setCart = useZustandStore((state) => state.setCart);
   const setSaved = useZustandStore((state) => state.setSaved);
-  async function addToCartHandler() {
+  const setCart = useZustandStore((state) => state.setCart);
+  // cart items:
+
+  async function addToCartHandler({ id, quantity }) {
     const updatedCart = await mockApi.addItemToCart({
       body: {
-        id: product.id,
+        id: id,
         quantity: quantity || 1,
       },
     });
     setCart(updatedCart);
   }
-  async function addToSavedHandler() {
+
+  // saved items:
+
+  async function addToSavedHandler({ id }) {
     const updatedSaved = await mockApi.addItemToSaved({
       body: {
-        id: product.id,
+        id: id,
         quantity: 1,
       },
     });
@@ -61,7 +67,9 @@ function AddProductCard({ product }: { product: Product }) {
       {/* btns */}
       <div className="card-add-to-cart">
         <CardBtn
-          onClick={addToCartHandler}
+          onClick={() =>
+            addToCartHandler({ id: product.id, quantity: quantity })
+          }
           className="CardBtn primary"
           style={{ width: "100%" }}
         >
@@ -72,7 +80,7 @@ function AddProductCard({ product }: { product: Product }) {
       <CardBtn
         className="CardBtn secondary"
         style={{ width: "100%" }}
-        onClick={addToSavedHandler}
+        onClick={() => addToSavedHandler({ id: product.id })}
       >
         Add To List
       </CardBtn>
@@ -81,3 +89,4 @@ function AddProductCard({ product }: { product: Product }) {
 }
 
 export default AddProductCard;
+
