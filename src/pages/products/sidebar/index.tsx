@@ -1,4 +1,4 @@
-import React, { ChangeEvent, useEffect, useState } from "react";
+import { ChangeEvent, useEffect, useState } from "react";
 import RangeSlider from "react-range-slider-input";
 import "react-range-slider-input/dist/style.css";
 import "./sidebar.scss";
@@ -9,12 +9,14 @@ function ProductsSideBar({
   colors,
   price,
   products,
+  sortBase,
   setFilteredProducts,
 }: {
   brands: string[];
   colors: string[];
   price: number[];
-  products: product[];
+  products: product[] | undefined;
+  sortBase: string;
   setFilteredProducts: any;
 }) {
   const [selectedBrands, setSelectedBrands] = useState([]);
@@ -28,7 +30,7 @@ function ProductsSideBar({
 
       // Filter by brands if any are selected
       if (selectedBrands.length > 0) {
-        filtered = filtered.filter((product) =>
+        filtered = filtered?.filter((product) =>
           selectedBrands.includes(product.variant.brand)
         );
       }
@@ -48,6 +50,21 @@ function ProductsSideBar({
             product.price.raw <= selectedPrice[1]
         );
       }
+      if (sortBase === "earliest") {
+        const sorted = [...filtered].sort(
+          (a, b) =>
+            new Date(a.createdAt).getTime() - new Date(b.createdAt).getTime()
+        );
+        filtered = sorted;
+      }
+      if (sortBase === "latest") {
+        const sorted = [...filtered].sort(
+          (a, b) =>
+            new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()
+        );
+        filtered = sorted;
+      }
+
       console.log({ filtered });
 
       // Update the filtered products state
@@ -55,7 +72,7 @@ function ProductsSideBar({
     };
 
     filterProducts();
-  }, [selectedBrands, selectedColors, selectedPrice, products]);
+  }, [selectedBrands, selectedColors, selectedPrice, products, sortBase]);
 
   return (
     <div className="sidebar">
@@ -80,10 +97,6 @@ function ProductsSideBar({
         setSelectedColors={setSelectedColors}
       />
       <PriceSlider price={price} setSelectedPrice={setSelectedPrice} />
-      <div className="sidebar-box_seller">
-        <div className="sidebar-box_title">seller</div>
-        <div className="sidebar-box_content">seller</div>
-      </div>
     </div>
   );
 }
@@ -200,6 +213,9 @@ export const PriceSlider = ({
   price: number[];
   setSelectedPrice: any;
 }) => {
+  const [minPrice, maxPrice] = price;
+  console.log(minPrice, maxPrice);
+
   console.log(price);
   return (
     <div className="sidebar-box_price" style={{ width: "100%" }}>
@@ -207,10 +223,10 @@ export const PriceSlider = ({
       <div className="sidebar-box_content" style={{ width: "100%" }}>
         {price ? (
           <RangeSlider
-            min={99}
-            max={1179}
-            defaultValue={[99, 1179]}
-            onInput={(e) => {
+            min={0}
+            max={1500}
+            defaultValue={[0, 1500]}
+            onInput={(e: any) => {
               setSelectedPrice(e);
             }}
           />

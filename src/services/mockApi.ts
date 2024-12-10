@@ -5,6 +5,7 @@ import {
   getCartsResponse,
   getProductCredentials,
   getProductsOptions,
+  product,
   Product,
 } from "./types";
 
@@ -30,6 +31,21 @@ export const mockApi = {
       filteredProducts = products.filter(
         (p) => p.category_id === options.category_id
       );
+    }
+    console.log(options.searchCategory, options.query);
+
+    if (options.query && options.searchCategory !== "all") {
+      filteredProducts = products.filter(
+        (p) =>
+          p.name.toLowerCase().includes(options.query.toLowerCase()) &&
+          p.category_id === options.searchCategory
+      );
+      console.log("if");
+    } else if (options.query) {
+      filteredProducts = products.filter((p) =>
+        p.name.toLowerCase().includes(options.query.toLowerCase())
+      );
+      console.log("else if");
     }
     return filteredProducts;
   },
@@ -116,6 +132,10 @@ export const mockApi = {
       (item) => item.product.id !== line_item_id
     );
     cart.total_items = cart.line_items.length;
+    cart.total_items = cart.line_items.reduce(
+      (acc, item) => acc + Number(item.quantity),
+      0
+    );
     cart.subtotal = cart.line_items.reduce(
       (acc, item) =>
         acc + Number(item.quantity) * Number(item.product.price.raw),

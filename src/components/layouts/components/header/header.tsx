@@ -4,7 +4,11 @@ import MenuIcon from "@mui/icons-material/Menu";
 import PersonIcon from "@mui/icons-material/Person";
 import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
 import { useZustandStore } from "../../../../services/store";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { useDebounce } from "use-debounce";
+import { categories, products } from "../../../../services/staticData";
+import { product } from "../../../../services/types";
 
 export default function Header({
   setShowSheet,
@@ -59,6 +63,30 @@ export default function Header({
 }
 
 function NavSearch({ device }: { device: string }) {
+  const [showList, setShowList] = useState(false);
+  const [searchTerm, setSearchTerm] = useState<string | null>(null);
+  const [categoryTerm, setCategoryTerm] = useState<string>("all");
+  const [searchedProducts, setSearchedProducts] = useState<product[] | null>(
+    products.slice(0, 5)
+  );
+  const navigate = useNavigate();
+  const handleSearch = () => {
+    navigate(`/search?query=${searchTerm}&searchCategory=${categoryTerm}`);
+  };
+
+  const [value] = useDebounce(searchTerm, 300);
+  const handleSuggestion = (value: string | null) => {
+    if (value) {
+      const searchedItems: product[] = products.filter((product) =>
+        product.name.toLowerCase().includes(value)
+      );
+      setSearchedProducts(searchedItems);
+    }
+    return;
+  };
+  useEffect(() => {
+    handleSuggestion(value);
+  }, [value]);
   return (
     <div className={`search ${device}`}>
       <div className="search_box search_box__category">
@@ -66,9 +94,12 @@ function NavSearch({ device }: { device: string }) {
           name="categories"
           id="1"
           className="search_item search_item__select"
+          onChange={(e) => setCategoryTerm(e.target.value)}
         >
           <option value="all">All</option>
-          <option value="shoes">Shoes</option>
+          {categories.map((category) => {
+            return <option value={category.id}>{category.name}</option>;
+          })}
         </select>
       </div>
       <div className="search_box search_box__input">
@@ -76,10 +107,29 @@ function NavSearch({ device }: { device: string }) {
           type="text"
           className="search_item search_item__input"
           placeholder="Search Amazon"
+          onChange={(e) => {
+            setSearchTerm(e.target.value);
+            setShowList(true);
+          }}
+          onClick={() => setShowList(true)}
         />
+        {showList && (
+          // <div className="list-backdrop">
+          <div
+            className="search_item search_item__list"
+            onMouseLeave={() => setShowList(false)}
+          >
+            {searchedProducts?.map((product) => (
+              <Link to={`/singleProduct/${product.product_id}`}>
+                {product.name}
+              </Link>
+            ))}
+          </div>
+          // </div>
+        )}
       </div>
       <div className="search_box search_box__btn">
-        <button className="search_item search_item__btn">
+        <button className="search_item search_item__btn" onClick={handleSearch}>
           <Search fontSize="large" />
         </button>
       </div>

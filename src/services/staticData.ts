@@ -1,3 +1,5 @@
+import { product } from "./types";
+
 export const categories = [
   {
     id: "cat_1",
@@ -67,7 +69,7 @@ export const categories = [
   },
 ];
 
-export const products = [
+export const products: product[] = [
   // Electronics
   // Samsung Galaxy S21
   {
@@ -1548,8 +1550,7 @@ export const products = [
       formatted_with_code: "198.00 USD",
     },
     is_valid: true,
-    product_meta: [],
-    selected_options: [],
+
     variant: {
       id: "var_30",
       sku: "MKJETSETTOTE_BLACK",
@@ -1615,8 +1616,7 @@ export const products = [
       formatted_with_code: "88.00 USD",
     },
     is_valid: true,
-    product_meta: [],
-    selected_options: [],
+
     variant: {
       id: "var_31",
       sku: "LEVIS711_BLUE",
@@ -1682,8 +1682,7 @@ export const products = [
       formatted_with_code: "580.00 USD",
     },
     is_valid: true,
-    product_meta: [],
-    selected_options: [],
+
     variant: {
       id: "var_32",
       sku: "GUCCIACE_WHITE",
@@ -1750,8 +1749,7 @@ export const products = [
       formatted_with_code: "5200.00 USD",
     },
     is_valid: true,
-    product_meta: [],
-    selected_options: [],
+
     variant: {
       id: "var_33",
       sku: "CHANELFLAP_BLACK",
@@ -1809,8 +1807,7 @@ export const products = [
       formatted_with_code: "990.00 USD",
     },
     is_valid: true,
-    product_meta: [],
-    selected_options: [],
+
     variant: {
       id: "var_34",
       sku: "PRADAANKLEBOOTS_BLACK",
@@ -1876,8 +1873,7 @@ export const products = [
       formatted_with_code: "1995.00 USD",
     },
     is_valid: true,
-    product_meta: [],
-    selected_options: [],
+
     variant: {
       id: "var_35",
       sku: "BURBERRYTRENCH_BEIGE",
@@ -1943,8 +1939,7 @@ export const products = [
       formatted_with_code: "495.00 USD",
     },
     is_valid: true,
-    product_meta: [],
-    selected_options: [],
+
     variant: {
       id: "var_36",
       sku: "VERSACESILKSCARF_GOLD",
@@ -2010,8 +2005,7 @@ export const products = [
       formatted_with_code: "129.00 USD",
     },
     is_valid: true,
-    product_meta: [],
-    selected_options: [],
+
     variant: {
       id: "var_37",
       sku: "ZARABLAZER_GRAY",
@@ -2077,8 +2071,7 @@ export const products = [
       formatted_with_code: "29.00 USD",
     },
     is_valid: true,
-    product_meta: [],
-    selected_options: [],
+
     variant: {
       id: "var_38",
       sku: "HMSWEATER_WHITE",
@@ -2139,8 +2132,7 @@ export const products = [
       formatted_with_code: "3200.00 USD",
     },
     is_valid: true,
-    product_meta: [],
-    selected_options: [],
+
     variant: {
       id: "var_39",
       sku: "DIORSADDLEBAG_BLACK",
@@ -2207,8 +2199,7 @@ export const products = [
       formatted_with_code: "199.00 USD",
     },
     is_valid: true,
-    product_meta: [],
-    selected_options: [],
+
     variant: {
       id: "var_40",
       sku: "OMRONBP_BLACK",
@@ -2274,8 +2265,7 @@ export const products = [
       formatted_with_code: "149.00 USD",
     },
     is_valid: true,
-    product_meta: [],
-    selected_options: [],
+
     variant: {
       id: "var_41",
       sku: "FITBITCHARGE5_BLACK",
@@ -2341,8 +2331,7 @@ export const products = [
       formatted_with_code: "99.00 USD",
     },
     is_valid: true,
-    product_meta: [],
-    selected_options: [],
+
     variant: {
       id: "var_42",
       sku: "WITHINGSCALE_WHITE",
@@ -2408,8 +2397,7 @@ export const products = [
       formatted_with_code: "399.00 USD",
     },
     is_valid: true,
-    product_meta: [],
-    selected_options: [],
+
     variant: {
       id: "var_43",
       sku: "THERAGUNELITE_BLACK",
@@ -2476,8 +2464,7 @@ export const products = [
       formatted_with_code: "429.00 USD",
     },
     is_valid: true,
-    product_meta: [],
-    selected_options: [],
+
     variant: {
       id: "var_44",
       sku: "APPLEWATCH7_SILVER",
@@ -2544,8 +2531,7 @@ export const products = [
       formatted_with_code: "229.00 USD",
     },
     is_valid: true,
-    product_meta: [],
-    selected_options: [],
+
     variant: {
       id: "var_45",
       sku: "SONICARETOOTHBRUSH_WHITE",
@@ -2611,8 +2597,7 @@ export const products = [
       formatted_with_code: "45.00 USD",
     },
     is_valid: true,
-    product_meta: [],
-    selected_options: [],
+
     variant: {
       id: "var_46",
       sku: "BEURERHEATLAMP_WHITE",
@@ -2674,8 +2659,7 @@ export const products = [
       formatted_with_code: "89.00 USD",
     },
     is_valid: true,
-    product_meta: [],
-    selected_options: [],
+
     variant: {
       id: "var_47",
       sku: "OMRONTENS_BLACK",
@@ -2742,8 +2726,7 @@ export const products = [
       formatted_with_code: "12.00 USD",
     },
     is_valid: true,
-    product_meta: [],
-    selected_options: [],
+
     variant: {
       id: "var_48",
       sku: "NATMADEVITD3_YELLOW",
@@ -2805,8 +2788,7 @@ export const products = [
       formatted_with_code: "5.00 USD",
     },
     is_valid: true,
-    product_meta: [],
-    selected_options: [],
+
     variant: {
       id: "var_49",
       sku: "PURELLSANITIZER_CLEAR",
@@ -2878,8 +2860,7 @@ export const products = [
       formatted_with_code: "129.00 USD",
     },
     is_valid: true,
-    product_meta: [],
-    selected_options: [],
+
     variant: {
       id: "var_50",
       sku: "DEWALTDRILL_YELLOW",
@@ -2945,8 +2926,7 @@ export const products = [
       formatted_with_code: "99.00 USD",
     },
     is_valid: true,
-    product_meta: [],
-    selected_options: [],
+
     variant: {
       id: "var_51",
       sku: "BOSCHLASER_BLUE",
@@ -3013,8 +2993,7 @@ export const products = [
       formatted_with_code: "149.00 USD",
     },
     is_valid: true,
-    product_meta: [],
-    selected_options: [],
+
     variant: {
       id: "var_52",
       sku: "MAKITAANGLEGRINDER_BLUE",
@@ -3080,8 +3059,7 @@ export const products = [
       formatted_with_code: "59.00 USD",
     },
     is_valid: true,
-    product_meta: [],
-    selected_options: [],
+
     variant: {
       id: "var_53",
       sku: "STANLEYTOOLKIT_YELLOW",
@@ -3148,8 +3126,7 @@ export const products = [
       formatted_with_code: "79.00 USD",
     },
     is_valid: true,
-    product_meta: [],
-    selected_options: [],
+
     variant: {
       id: "var_54",
       sku: "BLACKDECKERHEDGE_ORANGE",
@@ -3216,8 +3193,7 @@ export const products = [
       formatted_with_code: "249.00 USD",
     },
     is_valid: true,
-    product_meta: [],
-    selected_options: [],
+
     variant: {
       id: "var_55",
       sku: "MILWAUKEEWRENCH_RED",
@@ -3278,8 +3254,7 @@ export const products = [
       formatted_with_code: "129.00 USD",
     },
     is_valid: true,
-    product_meta: [],
-    selected_options: [],
+
     variant: {
       id: "var_56",
       sku: "RYOBITRIMMER_GREEN",
@@ -3340,8 +3315,7 @@ export const products = [
       formatted_with_code: "149.00 USD",
     },
     is_valid: true,
-    product_meta: [],
-    selected_options: [],
+
     variant: {
       id: "var_57",
       sku: "CRAFTSMANSET_RED",
@@ -3387,5 +3361,3 @@ export const products = [
     category_id: "cat_6",
   },
 ];
-
-

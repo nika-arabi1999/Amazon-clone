@@ -13,7 +13,13 @@ function AddProductCard({ product }: { product: Product }) {
   const setCart = useZustandStore((state) => state.setCart);
   // cart items:
 
-  async function addToCartHandler({ id, quantity }) {
+  async function addToCartHandler({
+    id,
+    quantity,
+  }: {
+    id: string;
+    quantity: number;
+  }) {
     const updatedCart = await mockApi.addItemToCart({
       body: {
         id: id,
@@ -25,7 +31,7 @@ function AddProductCard({ product }: { product: Product }) {
 
   // saved items:
 
-  async function addToSavedHandler({ id }) {
+  async function addToSavedHandler({ id }: { id: string }) {
     const updatedSaved = await mockApi.addItemToSaved({
       body: {
         id: id,
@@ -89,4 +95,3 @@ function AddProductCard({ product }: { product: Product }) {
 }
 
 export default AddProductCard;
-

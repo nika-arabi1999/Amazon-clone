@@ -35,7 +35,7 @@ export function SwiperRelatedItems({ relatedProducts }) {
     };
   }, []);
   return (
-    <div className="">
+    <div>
       {relatedProducts ? (
         <Swiper
           modules={[Navigation, Mousewheel]}
@@ -45,6 +45,7 @@ export function SwiperRelatedItems({ relatedProducts }) {
           mousewheel={true}
           navigation={true}
           className="card-swiper"
+          height={400}
         >
           {relatedProducts?.map((product, index) => {
             return (

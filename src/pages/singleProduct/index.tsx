@@ -15,7 +15,7 @@ import ProductDescription from "./components/productDescription";
 import ProductTable from "./components/productTable";
 import ProductPhotos from "./components/productInfo/ProductPhotos";
 import { useParams } from "react-router-dom";
-
+import ReactLoading from "react-loading";
 import { createContext, useEffect, useState } from "react";
 import { mockApi } from "../../services/mockApi";
 import { product } from "../../services/types";
@@ -24,10 +24,10 @@ export const ProductContext = createContext({ product: null });
 function SingleProduct() {
   const { product_id } = useParams();
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(true);
+  // const [error, setError] = useState(true);
   const [product, setProduct] = useState<product>();
   const [relatedProducts, setRelatedProducts] = useState();
-  const [category, setCategory] = useState("");
+
   // const {
   //   data: product,
   //   isLoading,
@@ -56,8 +56,9 @@ function SingleProduct() {
         setProduct(product);
         fetchRelatedProducts(product.category_id);
         console.log(product);
-      } catch (err) {
-        setError(err.message);
+      } catch (err:any) {
+        // setError(err.message);
+        console.log(err.message);
       } finally {
         setLoading(false);
       }
@@ -65,10 +66,13 @@ function SingleProduct() {
     fetchProduct(product_id);
   }, [product_id]);
 
-
-
-  const text = "<div style={{ color: `black` }}>Loading...</div>"
-  if (loading) return <span dangerouslySetInnerHTML={{__html:text}}></span>;
+  // const text = "<div style={{ color: `black` }}>Loading...</div>";
+  if (loading)
+    return (
+      <div className="products-Loading">
+        <ReactLoading type="spin" color="#ffd000" height={70} width={70} />
+      </div>
+    );
 
   return (
     <div

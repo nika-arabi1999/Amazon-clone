@@ -5,11 +5,15 @@ import MenuSheet from "../components/MenuSheet/MenuSheet";
 
 function HomeLayout({ children }: { children: React.ReactNode }) {
   const [showMenu, setShowMenu] = useState(false);
+
   return (
     <div style={{ position: "relative" }}>
-      <Header setShowSheet={setShowMenu} />
+      <Header
+        setShowSheet={setShowMenu}
+       
+      />
       <SidebarSheet showSheet={showMenu} setShowSheet={setShowMenu} top="0">
-        <MenuSheet /> 
+        <MenuSheet />
         {/* menu list */}
       </SidebarSheet>
       {children}

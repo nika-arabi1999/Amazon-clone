@@ -1,12 +1,10 @@
-
-
 import { cartItems } from "../home/items";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Mousewheel, Navigation } from "swiper/modules";
 
 import CardBtn from "../../components/common/btn/CardBtn";
 
-function CartRelated() {
+function CartRelated({ relatedItems, addToCartHandler }) {
   return (
     <div className="cart-part cart-related">
       {/* <SwiperCards title="also bought" swiperItems={cartItems}/> */}
@@ -23,10 +21,14 @@ function CartRelated() {
           navigation={true}
           className="card-swiper"
         >
-          {cartItems.map((item) => {
+          {relatedItems.map((item) => {
             return (
               <SwiperSlide className="card-swiper-slide" key={item.id}>
-                <SingleCartRelated item={item} midClass="related" />
+                <SingleCartRelated
+                  item={item}
+                  midClass="related"
+                  addToCartHandler={addToCartHandler}
+                />
               </SwiperSlide>
             );
           })}
@@ -35,7 +37,7 @@ function CartRelated() {
     </div>
   );
 }
-function CartRelatedDesktop() {
+function CartRelatedDesktop({ relatedItems, addToCartHandler }) {
   return (
     <div className="cart-part cart-related">
       <div className="SwiperCards-container" style={{ width: "100%" }}>
@@ -43,8 +45,14 @@ function CartRelatedDesktop() {
           related to your cart items
         </p>
         <ul className="cart-related-list">
-          {cartItems.map((item) => {
-            return <SingleCartRelated item={item} midClass="related" />
+          {relatedItems.map((item) => {
+            return (
+              <SingleCartRelated
+                item={item}
+                midClass="related"
+                addToCartHandler={addToCartHandler}
+              />
+            );
           })}
         </ul>
       </div>
@@ -55,6 +63,7 @@ function CartRelatedDesktop() {
 function SingleCartRelated({
   item,
   midClass,
+  addToCartHandler,
 }: {
   item: any;
   midClass: string;
@@ -62,7 +71,7 @@ function SingleCartRelated({
   return (
     <div className={`cart-${midClass}-single`}>
       <div className="single_image">
-        <img src={`${item.image}`} />
+        <img src={`${item.image[0].source}`} />
       </div>
       <div className="single_details">
         <a className="single_details_name">{item.name}</a>
@@ -71,9 +80,15 @@ function SingleCartRelated({
           &#9733;&#9733;&#9733;&#9734;&#9734;
         </div>
         <div className="single_details_price">
-          $<strong>{item.price}</strong>
+          $<strong>{item.price.raw}</strong>
         </div>
-     <CardBtn className="CardBtn primary" style={{fontSize:"1.5rem", width:"100%"}}>Add To Cart</CardBtn>
+        <CardBtn
+          className="CardBtn primary"
+          style={{ fontSize: "1.5rem", width: "100%" }}
+          onClick={() => addToCartHandler({ id: item.id, quantity: 1 })}
+        >
+          Add To Cart
+        </CardBtn>
       </div>
     </div>
   );

@@ -2,22 +2,33 @@ import { useEffect, useState } from "react";
 import SidebarSheet from "../../components/layouts/components/SidebarSheet/SidebarSheet";
 import "./../../components/layouts/components/SidebarSheet/SidebarSheet.scss";
 import useResizeWindow from "../../hooks/useResizeWindow";
+import ReactLoading from "react-loading";
 
 import "./products.scss";
 import ProductsSideBar from "./sidebar";
-import { Link, useParams } from "react-router-dom";
+import { Link, useParams, useSearchParams } from "react-router-dom";
 import { mockApi } from "../../services/mockApi";
 import { product } from "../../services/types";
 
 function Products() {
-  const [showFilters, setShowFilters] = useState(false);
+  const [showFilters, setShowFilters] = useState<boolean>(false);
   const [isMobile, isTablet] = useResizeWindow();
-  const [products, setProducts] = useState([]);
-  const [filteredProducts, setFilteredProducts] = useState([]);
+  const [products, setProducts] = useState<product[] | undefined>([]);
+  const [filteredProducts, setFilteredProducts] = useState<
+    product[] | undefined
+  >([]);
   const [loading, setLoading] = useState(true);
-  console.log({ filteredProducts });
+  const [sortBase, setSortBase] = useState("select");
   const [error, setError] = useState(false);
   const { category_id } = useParams();
+  const [searchParams] = useSearchParams();
+
+  const query = searchParams.get("query");
+  console.log({ query });
+
+  const searchCategory = searchParams.get("searchCategory");
+  console.log({ searchCategory });
+
   // const [brands, setBrands] = useState([]);
   const brands = [
     ...new Set(
@@ -34,29 +45,48 @@ function Products() {
   ];
   const minPrice = Math.min(...price);
   const maxPrice = Math.max(...price);
-  console.log(minPrice, maxPrice);
 
   // const { data: products, isFetching } = useGetProductsQuery({
   //   category_slug: category,
   // });
   useEffect(() => {
-    const fetchProducts = async (category_id: string | undefined) => {
-      try {
-        setLoading(true);
-        const products = await mockApi.getProducts({
+    const setSearchedProducts = async () => {
+      let products;
+      if (category_id) {
+        products = await mockApi.getProducts({
           category_id: category_id,
         });
+      } else if (query && searchCategory === "all") {
+        products = await mockApi.getProducts({
+          query: query,
+          searchCategory,
+        });
+      } else if (query && searchCategory !== "all") {
+        products = await mockApi.getProducts({
+          query,
+          searchCategory,
+        });
+      }
+      return products;
+    };
+    const fetchProducts = async () => {
+      try {
+        setLoading(true);
+        const products = await setSearchedProducts();
+        console.log({ productsssss: products });
+
         setProducts(products);
         setFilteredProducts(products);
-      } catch (err) {
+      } catch (err: any) {
         setError(err.message);
       } finally {
         setLoading(false);
       }
     };
-    fetchProducts(category_id);
-  }, [category_id]);
 
+    fetchProducts();
+  }, [category_id, query, searchCategory]);
+  error && <>nothing found!</>;
   return (
     <div className="products-main">
       {isMobile && !isTablet ? (
@@ -69,6 +99,7 @@ function Products() {
             brands={brands}
             colors={colors}
             price={[minPrice, maxPrice]}
+            sortBase={sortBase}
             products={products}
             setFilteredProducts={setFilteredProducts}
           />
@@ -78,6 +109,7 @@ function Products() {
           brands={brands}
           colors={colors}
           price={[minPrice, maxPrice]}
+          sortBase={sortBase}
           products={products}
           setFilteredProducts={setFilteredProducts}
         />
@@ -94,14 +126,22 @@ function Products() {
             </button>
           </div>
           <div className="products-setting_sort">
-            <select name="sort" id="sort" className="select-sort">
-              <option value="earlist">earlist</option>
+            <select
+              name="sort"
+              id="sort"
+              className="select-sort"
+              onChange={(e) => setSortBase(e.target.value)}
+            >
+              <option value="select">Select Sort</option>
+              <option value="earliest">earlist</option>
               <option value="latest">latest</option>
             </select>
           </div>
         </div>
         {loading ? (
-          "is loading..."
+          <div className="products-Loading">
+            <ReactLoading type="spin" color="#ffd000" height={70} width={70} />
+          </div>
         ) : (
           <div className="products-items">
             {filteredProducts?.map((product, index) => {

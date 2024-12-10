@@ -363,11 +363,11 @@ interface Image {
   asset_id: string;
 }
 
-export interface Product {
+export interface product {
   id: string;
   product_id: string;
   name: string;
-  product_name: string;
+  product_name?: string;
   sku: string;
   permalink: string;
   quantity: number;
@@ -375,9 +375,8 @@ export interface Product {
   price: Price;
   line_total: LineTotal;
   is_valid: boolean;
-  product_meta: any[]; // Adjust this type if you have specific metadata structure
-  selected_options: any[]; // Adjust this type if you have specific selected options structure
   variant: Variant;
+
   brand?: string;
   color?: string;
   variant_group: VariantGroup[];
@@ -391,8 +390,8 @@ export type getProductsOptions = {
   active?: 0 | 1;
   limit?: number;
   page?: number;
-  sortBy?: "id" | "sort_order" | "name" | "created_at" | "updated_at" | "price";
-  sortDirection?: "asc" | "desc";
+  query?: string;
+  searchCategory?: string | null;
 };
 
 export type getProductsResponse = {
