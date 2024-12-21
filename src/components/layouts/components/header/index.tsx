@@ -10,7 +10,7 @@ import { useDebounce } from "use-debounce";
 import { categories, products } from "../../../../services/staticData";
 import { product } from "../../../../services/types";
 
-export default function Header({
+function TopHeader({
   setShowSheet,
 }: {
   setShowSheet: React.Dispatch<React.SetStateAction<boolean>>;
@@ -136,3 +136,5 @@ function NavSearch({ device }: { device: string }) {
     </div>
   );
 }
+
+export default TopHeader;

@@ -1,14 +1,15 @@
 import React, { useState } from "react";
 import SidebarSheet from "../components/SidebarSheet/SidebarSheet";
 import MenuSheet from "../components/MenuSheet/MenuSheet";
-import Header from "../components/header/Header";
+
+import TopHeader from "../components/header";
 
 function HomeLayout({ children }: { children: React.ReactNode }) {
   const [showMenu, setShowMenu] = useState(false);
 
   return (
     <div style={{ position: "relative" }}>
-      <Header
+      <TopHeader
         setShowSheet={setShowMenu}
        
       />
