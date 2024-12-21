@@ -1,5 +1,6 @@
-import { Swiper, SwiperSlide } from "swiper/react";
+//this component is completely static and the type doesn't matter, so i use type any.
 
+import { Swiper, SwiperSlide } from "swiper/react";
 import "./home.scss";
 import { bannerItems, gridItems2, gridItems1, swiperItems } from "./items";
 import { Mousewheel, Navigation } from "swiper/modules";
@@ -21,10 +22,10 @@ export default function Home() {
     </div>
   );
 }
-function GridCards({ gridItems }) {
+function GridCards({ gridItems }:{gridItems:any}) {
   return (
     <div className="cards">
-      {gridItems.map((group) => {
+      {gridItems.map((group: any) => {
         return (
           <div
             className={`${
@@ -40,7 +41,7 @@ function GridCards({ gridItems }) {
                   : "sub-card__grid"
               }`}
             >
-              {group.items.map((item) => {
+              {group.items.map((item:any) => {
                 return (
                   <div className="grid-item" key={item.id}>
                     <img src={`${item.imgUrl}`} className="grid-item__image" />
@@ -86,7 +87,7 @@ export function SwiperCards({
         navigation={true}
         className="card-swiper"
       >
-        {swiperItems.map((item) => {
+        {swiperItems.map((item: any) => {
           return (
             <SwiperSlide className="card-swiper-slide" key={item.id}>
               <img

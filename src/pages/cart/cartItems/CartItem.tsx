@@ -1,5 +1,5 @@
-import { useEffect, useState } from "react";
-import { Product } from "../../../services/types";
+import {useState } from "react";
+import { product } from "../../../services/types";
 import { useZustandStore } from "../../../services/store";
 import { mockApi } from "../../../services/mockApi";
 
@@ -9,7 +9,7 @@ export default function CartItem({
   hideQTY = false,
   productQuantity,
 }: {
-  product: Product;
+  product: product;
   children: any;
   hideQTY?: boolean;
   productQuantity?: number;

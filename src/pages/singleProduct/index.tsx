@@ -20,13 +20,14 @@ import { createContext, useEffect, useState } from "react";
 import { mockApi } from "../../services/mockApi";
 import { product } from "../../services/types";
 
+
 export const ProductContext = createContext({ product: null });
 function SingleProduct() {
   const { product_id } = useParams();
   const [loading, setLoading] = useState(true);
-  // const [error, setError] = useState(true);
+  const [error, setError] = useState(false);
   const [product, setProduct] = useState<product>();
-  const [relatedProducts, setRelatedProducts] = useState();
+  const [relatedProducts, setRelatedProducts] = useState<product[]>();
 
   // const {
   //   data: product,
@@ -42,7 +43,7 @@ function SingleProduct() {
         });
         setRelatedProducts(products);
       } catch (err) {
-        setError(err.message);
+        setError(true);
       } finally {
         setLoading(false);
       }
@@ -56,7 +57,7 @@ function SingleProduct() {
         setProduct(product);
         fetchRelatedProducts(product.category_id);
         console.log(product);
-      } catch (err:any) {
+      } catch (err: any) {
         // setError(err.message);
         console.log(err.message);
       } finally {
@@ -74,41 +75,50 @@ function SingleProduct() {
       </div>
     );
 
+  if (error)
+    return <div className="products-Loading">Something went wrong!</div>;
+
   return (
-    <div
-      className="main-product-container"
-      style={{ color: "#000", width: "100%", background: "#fff" }}
-    >
-      {/* _FIRST____Info_____________________________________ */}
-      <div className="product-info">
-        {/* -----photos---- D */}
-        <ProductPhotos product={product} />
-        {/* -----details----- */}
-        <ProductDetails product={product} />
-        {/* -----add to card----- */}
-        <AddProductCard product={product} />
+    product && (
+      <div
+        className="main-product-container"
+        style={{ color: "#000", width: "100%", background: "#fff" }}
+      >
+        {/* _FIRST____Info_____________________________________ */}
+
+        <div className="product-info">
+          {/* -----photos---- D */}
+          <ProductPhotos product={product} />
+          {/* -----details----- */}
+          <ProductDetails product={product} />
+          {/* -----add to card----- */}
+          <AddProductCard product={product} />
+        </div>
+        {/* _SECOND___description______________________________ */}
+        <div className="product-description">
+          <h3>Product Description</h3>
+          <ProductDescription />
+        </div>
+        {/* _THIRD____related_________________________________ */}
+
+        <div className="product-related">
+          {relatedProducts && (
+            <ProductRelated relatedProducts={relatedProducts} />
+          )}
+        </div>
+        {/* _Fourth___table__________________________________ */}
+        <div className="product-table">
+          <ProductTable product={product} />
+        </div>
+        {/* _Fifth____reviews_________________________________ */}
+        <div className="product-reviews">
+          {/* --------------stars column-------------- */}
+          <ReviewsStars />
+          {/* -------------commnts column------------- */}
+          <ReviewsComments />
+        </div>
       </div>
-      {/* _SECOND___description______________________________ */}
-      <div className="product-description">
-        <h3>Product Description</h3>
-        <ProductDescription />
-      </div>
-      {/* _THIRD____related_________________________________ */}
-      <div className="product-related">
-        <ProductRelated relatedProducts={relatedProducts} />
-      </div>
-      {/* _Fourth___table__________________________________ */}
-      <div className="product-table">
-        <ProductTable product={product} />
-      </div>
-      {/* _Fifth____reviews_________________________________ */}
-      <div className="product-reviews">
-        {/* --------------stars column-------------- */}
-        <ReviewsStars />
-        {/* -------------commnts column------------- */}
-        <ReviewsComments />
-      </div>
-    </div>
+    )
   );
 }
 

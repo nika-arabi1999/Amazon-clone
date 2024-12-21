@@ -3,11 +3,11 @@ import "./ProducrCard.scss";
 
 import CardBtn from "../../../../../components/common/btn/CardBtn";
 import { useState } from "react";
-import { Product } from "../../../../../services/types";
+import { product } from "../../../../../services/types";
 import { useZustandStore } from "../../../../../services/store";
 import { mockApi } from "../../../../../services/mockApi";
 
-function AddProductCard({ product }: { product: Product }) {
+function AddProductCard({ product }: { product: product }) {
   const [quantity, setQuantity] = useState<number>(1);
   const setSaved = useZustandStore((state) => state.setSaved);
   const setCart = useZustandStore((state) => state.setCart);

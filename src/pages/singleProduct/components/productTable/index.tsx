@@ -1,8 +1,9 @@
 
+import { product } from "../../../../services/types";
 import "./productTable.scss";
 
 
-function ProductTable({product}) {
+function ProductTable({product}:{product: product}) {
   
 
 

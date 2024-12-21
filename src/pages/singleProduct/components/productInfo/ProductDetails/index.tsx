@@ -1,11 +1,8 @@
-import { useContext } from "react";
-
 import "./ProductDetails.scss";
-import { ProductContext } from "../../..";
 import DOMPurify from "dompurify";
+import { product } from "../../../../../services/types";
 
-function ProductDetails({product}) {
-  
+function ProductDetails({ product }:{product: product}) {
   return (
     <div className="product-info_details">
       <DetailsTitle product={product} />
@@ -15,7 +12,7 @@ function ProductDetails({product}) {
   );
 }
 
-function DetailsTitle({ product }) {
+function DetailsTitle({ product }:{product: product}) {
   return (
     <div className="details_title">
       <span className="details_title_name">{product.name}</span>
@@ -32,13 +29,13 @@ function DetailsTitle({ product }) {
   );
 }
 
-function DetailsPrice({ product }) {
+function DetailsPrice({ product }: { product: product }) {
   return (
     <div className="details_price">{product.price.formatted_with_symbol}</div>
   );
 }
 
-function DetailsDescription({ product }) {
+function DetailsDescription({ product }: { product: product }) {
   // Sanitize the HTML description
   const sanitizedDescription = DOMPurify.sanitize(product.variant.description);
 

@@ -9,6 +9,7 @@ import useResizeWindow from "../../hooks/useResizeWindow";
 import { useZustandStore } from "../../services/store";
 import { products } from "../../services/staticData";
 import { mockApi } from "../../services/mockApi";
+import { product } from "../../services/types";
 
 function Cart() {
   const [isMobile] = useResizeWindow();
@@ -63,7 +64,13 @@ function Cart() {
   );
 }
 
-function CartContent({ relatedItems, addToCartHandler }) {
+function CartContent({
+  relatedItems,
+  addToCartHandler,
+}: {
+  relatedItems: product[];
+  addToCartHandler: any;
+}) {
   return (
     <div className="cart-content">
       {/* ___Left___ */}
@@ -83,7 +90,13 @@ function CartContent({ relatedItems, addToCartHandler }) {
   );
 }
 
-function CartContentDesktop({ relatedItems, addToCartHandler }) {
+function CartContentDesktop({
+  relatedItems,
+  addToCartHandler,
+}: {
+  relatedItems: product[];
+  addToCartHandler: any;
+}) {
   return (
     <div className="cart-content">
       {/* ___Left___ */}

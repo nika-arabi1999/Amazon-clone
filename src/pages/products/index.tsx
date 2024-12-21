@@ -32,16 +32,16 @@ function Products() {
   // const [brands, setBrands] = useState([]);
   const brands = [
     ...new Set(
-      products.map((product) => product.variant.brand).filter((brand) => brand)
+      products?.map((product) => product.variant.brand).filter((brand) => brand)
     ),
   ];
   const colors = [
     ...new Set(
-      products.map((product) => product.variant.color).filter((color) => color)
+      products?.map((product) => product.variant.color).filter((color) => color)
     ),
   ];
   const price: number[] = [
-    ...new Set(products.map((product) => product.price.raw)),
+    ...new Set(products?.map((product) => product.price.raw)),
   ];
   const minPrice = Math.min(...price);
   const maxPrice = Math.max(...price);

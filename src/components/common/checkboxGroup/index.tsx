@@ -53,19 +53,5 @@ interface CheckboxGroupProps {
     return <div>{clonedChildren}</div>;
   };
   
-  // Example usage
-  const App: React.FC = () => {
-    const handleGroupChange = (checkedValues: string[]) => {
-      
-    };
+
   
-    return (
-      <CheckboxGroup onChange={handleGroupChange}>
-        <Checkbox value="Option 1" />
-        <Checkbox value="Option 2" />
-        <Checkbox value="Option 3" />
-      </CheckboxGroup>
-    );
-  };
-  
-  export default App;

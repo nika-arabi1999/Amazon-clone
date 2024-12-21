@@ -20,27 +20,20 @@ export type getAssetsResponse = {
 
 // Carts
 
-export type getCartsResponse = {
+export type cart = {
   id: string;
-  created: number;
-  updated: number;
-  expires: number;
   total_items: number;
-  total_unique_items: number;
-  subtotal: {
-    raw: number;
-    formatted: string;
-    formatted_with_symbol: string;
-    formatted_with_code: string;
-  };
-  hosted_checkout_url: string;
-  line_items: { product: Product; quantity: number }[];
+  subtotal: number;
+  line_items: { product: product; quantity: number }[];
   currency: {
     code: string;
     symbol: string;
   };
-  discount: any[];
-  meta: any;
+};
+export type saved = {
+  id: string;
+  line_items: { product: product; quantity: number }[];
+  total_items: number;
 };
 
 export type addToCartCredentials = {
@@ -376,12 +369,16 @@ export interface product {
   line_total: LineTotal;
   is_valid: boolean;
   variant: Variant;
-
   brand?: string;
   color?: string;
   variant_group: VariantGroup[];
   image: Image[];
   category_id: string;
+}
+
+export interface lineItems {
+  product: product;
+  quantity: number;
 }
 
 export type getProductsOptions = {
@@ -400,8 +397,8 @@ export type getProductsResponse = {
 };
 
 export type getProductCredentials = {
-  product_id: string;
-  options: { type: "id" | "sku" | "permalink" };
+  product_id: string | undefined;
+  options?: { type: "id" | "sku" | "permalink" };
 };
 
 export type variant = {

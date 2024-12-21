@@ -1,11 +1,12 @@
 import { Avatar } from "@mui/material";
 import ChevronRightIcon from "@mui/icons-material/ChevronRight";
 import "./MenuSheet.scss";
-import { lightGreen } from "@mui/material/colors";
-import { useGetCategoriesQuery } from "../../../../services/dashboardApi";
+
 import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { mockApi } from "../../../../services/mockApi";
+import { category } from "../../../../services/types";
+
 
 // const categories = [
 //   {
@@ -30,8 +31,8 @@ import { mockApi } from "../../../../services/mockApi";
 function MenuSheet() {
   // const { data } = useGetCategoriesQuery();
   // const categories = data?.data;
-  const [categories, setCategories] = useState([]);
-  const [loding, setLoading] = useState(true);
+  const [categories, setCategories] = useState<category[]>([]);
+  const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
   useEffect(() => {
@@ -41,19 +42,21 @@ function MenuSheet() {
         setLoading(true);
         const categories = await mockApi.getCategories(); // Example: Fetching categories from "Electronics"
         setCategories(categories);
-      } catch (err) {
+      } catch (err:any) {
         setError(err.message);
       } finally {
         setLoading(false);
       }
-    }; fetchCategories();
+    };
+    fetchCategories();
   }, []);
 
-
-
-
-
-
+  if (loading) {
+    return <>is Loading...</>;
+  }
+  if (error) {
+    return <>an error occured!</>;
+  }
   return (
     <div className="menu">
       <div className="menu-hello">

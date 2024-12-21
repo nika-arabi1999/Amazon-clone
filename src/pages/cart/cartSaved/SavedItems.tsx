@@ -36,10 +36,7 @@ function SavedItems() {
   return (
     <div className="cart-part cart-saved">
       <h3 className="cart-saved_title">Saved for later</h3>
-      <div
-        className="cart-saved_list"
-
-      >
+      <div className="cart-saved_list">
         {saved.line_items.length > 0 ? (
           saved.line_items.map((cartItem) => {
             return (
@@ -69,7 +66,11 @@ function SavedItems() {
   );
 }
 
-export function SavedItemBtns({ removeSavedItem }) {
+export function SavedItemBtns({
+  removeSavedItem,
+}: {
+  removeSavedItem: () => Promise<void>;
+}) {
   return (
     <div className="btn-div row">
       <CardBtn className="CardBtn white">Move to cart</CardBtn>

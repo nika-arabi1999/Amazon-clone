@@ -3,9 +3,10 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Mousewheel, Navigation } from "swiper/modules";
 import { useEffect, useState } from "react";
 import { ProductCard } from "../../../products";
+import { product } from "../../../../services/types";
 
 // import
-function ProductRelated({ relatedProducts }) {
+function ProductRelated({ relatedProducts }: { relatedProducts: product[] }) {
   return (
     <div>
       <h3
@@ -18,7 +19,7 @@ function ProductRelated({ relatedProducts }) {
   );
 }
 
-export function SwiperRelatedItems({ relatedProducts }) {
+export function SwiperRelatedItems({ relatedProducts }: { relatedProducts: product[] }) {
   const [slidesPerView, setSlidesPerView] = useState(getSlidesPerView());
 
   function getSlidesPerView() {

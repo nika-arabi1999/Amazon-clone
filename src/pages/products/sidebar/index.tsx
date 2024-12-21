@@ -19,9 +19,9 @@ function ProductsSideBar({
   sortBase: string;
   setFilteredProducts: any;
 }) {
-  const [selectedBrands, setSelectedBrands] = useState([]);
-  const [selectedColors, setSelectedColors] = useState([]);
-  const [selectedPrice, setSelectedPrice] = useState([]);
+  const [selectedBrands, setSelectedBrands] = useState<string[]>([]);
+  const [selectedColors, setSelectedColors] = useState<string[]>([]);
+  const [selectedPrice, setSelectedPrice] = useState<number[]>([]);
   console.log(selectedBrands, selectedColors, selectedPrice);
 
   useEffect(() => {
@@ -37,27 +37,27 @@ function ProductsSideBar({
 
       // Filter by colors if any are selected
       if (selectedColors.length > 0) {
-        filtered = filtered.filter((product) =>
+        filtered = filtered?.filter((product) =>
           selectedColors.includes(product.variant.color)
         );
       }
 
       // Filter by price range
       if (selectedPrice.length > 1) {
-        filtered = filtered.filter(
-          (product) =>
+        filtered = filtered?.filter(
+          (product: product) =>
             product.price.raw >= selectedPrice[0] &&
             product.price.raw <= selectedPrice[1]
         );
       }
-      if (sortBase === "earliest") {
+      if (sortBase === "earliest" && filtered) {
         const sorted = [...filtered].sort(
           (a, b) =>
             new Date(a.createdAt).getTime() - new Date(b.createdAt).getTime()
         );
         filtered = sorted;
       }
-      if (sortBase === "latest") {
+      if (sortBase === "latest" && filtered) {
         const sorted = [...filtered].sort(
           (a, b) =>
             new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()
@@ -162,7 +162,7 @@ function CheckBoxGroup({
 }: {
   options: any;
   setSelectedInfo: any;
-  selectedInfo: any;
+  selectedInfo: string[] | undefined;
 }) {
   // const [checkedItems, setCheckedItems] = useState<string[]>([]);
 
@@ -170,9 +170,11 @@ function CheckBoxGroup({
     const { value, checked } = event.target;
 
     if (checked) {
-      setSelectedInfo((prev) => [...prev, value]);
+      setSelectedInfo((prev: string[]) => [...prev, value]);
     } else {
-      setSelectedInfo((prev) => prev.filter((item) => item !== value));
+      setSelectedInfo((prev: string[]) =>
+        prev.filter((item) => item !== value)
+      );
     }
   };
 
@@ -185,7 +187,7 @@ function CheckBoxGroup({
               type="checkbox"
               onChange={(e) => handleCheckboxChange(e)}
               value={option}
-              checked={selectedInfo.includes(option)}
+              checked={selectedInfo?.includes(option)}
             />
             {option}
           </label>

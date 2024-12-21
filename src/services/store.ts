@@ -1,6 +1,8 @@
 import { configureStore } from "@reduxjs/toolkit";
 import { dashboardApi } from "./dashboardApi";
 import { create } from "zustand";
+import { cart, saved } from "./types";
+
 
 export const store = configureStore({
   reducer: {
@@ -10,14 +12,19 @@ export const store = configureStore({
     getDefaultMiddleware().concat(dashboardApi.middleware),
 });
 
-export const useZustandStore = create((set) => ({
+export const useZustandStore = create<{
+  cart: cart;
+  setCart: (cart: cart) => void;
+  saved: saved;
+  setSaved: (saved: saved) => void;
+}>()((set) => ({
   cart: getCart(),
-  setCart: (cart) => {
+  setCart: (cart: cart) => {
     localStorage.setItem("cart", JSON.stringify(cart));
     set({ cart });
   },
   saved: getSaved(),
-  setSaved: (saved) => {
+  setSaved: (saved: saved) => {
     localStorage.setItem("saved", JSON.stringify(saved));
     set({ saved });
   },

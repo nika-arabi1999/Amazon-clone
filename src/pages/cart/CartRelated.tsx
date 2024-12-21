@@ -1,10 +1,16 @@
-import { cartItems } from "../home/items";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Mousewheel, Navigation } from "swiper/modules";
 
 import CardBtn from "../../components/common/btn/CardBtn";
+import { product } from "../../services/types";
 
-function CartRelated({ relatedItems, addToCartHandler }) {
+function CartRelated({
+  relatedItems,
+  addToCartHandler,
+}: {
+  relatedItems: product[];
+  addToCartHandler: any;
+}) {
   return (
     <div className="cart-part cart-related">
       {/* <SwiperCards title="also bought" swiperItems={cartItems}/> */}
@@ -37,7 +43,13 @@ function CartRelated({ relatedItems, addToCartHandler }) {
     </div>
   );
 }
-function CartRelatedDesktop({ relatedItems, addToCartHandler }) {
+function CartRelatedDesktop({
+  relatedItems,
+  addToCartHandler,
+}: {
+  relatedItems: product[];
+  addToCartHandler: any;
+}) {
   return (
     <div className="cart-part cart-related">
       <div className="SwiperCards-container" style={{ width: "100%" }}>
@@ -67,6 +79,7 @@ function SingleCartRelated({
 }: {
   item: any;
   midClass: string;
+  addToCartHandler: any;
 }) {
   return (
     <div className={`cart-${midClass}-single`}>

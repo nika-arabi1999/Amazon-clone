@@ -1,3 +1,5 @@
+
+import { product } from "../../../../../services/types";
 import SingleProductSwiper from "./SingleProductSwiper";
 // import { product } from "../../../../../services/types";
 
