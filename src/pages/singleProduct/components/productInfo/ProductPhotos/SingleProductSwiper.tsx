@@ -2,9 +2,8 @@ import ImageGallery from "react-image-gallery";
 
 //style
 import "react-image-gallery/styles/scss/image-gallery.scss";
-function SingleProductSwiper({product}) {
- 
-
+import { product } from "../../../../../services/types";
+function SingleProductSwiper({ product }: { product: product }) {
   const productsWithOriginal = product.image.map((image) => ({
     original: image.source,
     thumbnail: image.source,
@@ -12,17 +11,11 @@ function SingleProductSwiper({product}) {
   return (
     <ImageGallery
       items={productsWithOriginal}
-      original="url"
-      thumbnail="url"
-      originalHeight="200px"
-      originalWidth="200px"
-      loading="lazy"
       showPlayButton={true}
       showFullscreenButton={true}
       slideInterval={1000}
       slideOnThumbnailOver={true}
       showIndex={true}
-      className="product-gallery"
     />
   );
 }

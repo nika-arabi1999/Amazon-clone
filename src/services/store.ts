@@ -1,16 +1,16 @@
-import { configureStore } from "@reduxjs/toolkit";
-import { dashboardApi } from "./dashboardApi";
+// import { configureStore } from "@reduxjs/toolkit";
+// import { dashboardApi } from "./dashboardApi";
 import { create } from "zustand";
 import { cart, saved } from "./types";
 
 
-export const store = configureStore({
-  reducer: {
-    [dashboardApi.reducerPath]: dashboardApi.reducer,
-  },
-  middleware: (getDefaultMiddleware) =>
-    getDefaultMiddleware().concat(dashboardApi.middleware),
-});
+// export const store = configureStore({
+//   reducer: {
+//     [dashboardApi.reducerPath]: dashboardApi.reducer,
+//   },
+//   middleware: (getDefaultMiddleware) =>
+//     getDefaultMiddleware().concat(dashboardApi.middleware),
+// });
 
 export const useZustandStore = create<{
   cart: cart;
