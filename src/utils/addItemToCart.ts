@@ -2,7 +2,7 @@ import { mockApi } from "../services/mockApi";
 import { useZustandStore } from "../services/store";
 
 const setCart = useZustandStore((state) => state.setCart);
-async function addToCartHandler({id, quantity}) {
+async function addToCartHandler({id, quantity}:{id: string, quantity: number}) {
   const updatedCart = await mockApi.addItemToCart({
     body: {
       id: id,
