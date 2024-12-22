@@ -5,9 +5,12 @@
     border-radius: 3rem;
     cursor: pointer;
     box-shadow:  0 2px 5px 0 rgba(213, 217, 217, .5);
+    color: #000;
+        
     &.primary {
         background: #ffd000;
         border: none;
+
         
     }
     &.secondary { background: #fff;

@@ -120,26 +120,22 @@ export const products: product[] = [
     image: [
       {
         type: "image",
-        source:
-          "../../public/images/samsung-galaxy-s21/51SUZRmZzOL._AC_SX679_.jpg",
+        source: "/images/samsung-galaxy-s21/51SUZRmZzOL._AC_SX679_.jpg",
         asset_id: "asset_1",
       },
       {
         type: "image",
-        source:
-          "../../public/images/samsung-galaxy-s21/61dzWUAAVjL._AC_SX679_.jpg",
+        source: "/images/samsung-galaxy-s21/61dzWUAAVjL._AC_SX679_.jpg",
         asset_id: "asset_1",
       },
       {
         type: "image",
-        source:
-          "../../public/images/samsung-galaxy-s21/516FQtYXIpL._AC_SX679_.jpg",
+        source: "/images/samsung-galaxy-s21/516FQtYXIpL._AC_SX679_.jpg",
         asset_id: "asset_1",
       },
       {
         type: "image",
-        source:
-          "../../public/images/samsung-galaxy-s21/51Bt4GgTjeL._AC_SX679_.jpg",
+        source: "/images/samsung-galaxy-s21/51Bt4GgTjeL._AC_SX679_.jpg",
         asset_id: "asset_1",
       },
     ],
@@ -195,20 +191,17 @@ export const products: product[] = [
     image: [
       {
         type: "image",
-        source:
-          "../../public/images/sony-wh-1000xm4-headphones/51aXvjzcukL._AC_SX679_.jpg",
+        source: "/images/sony-wh-1000xm4-headphones/51aXvjzcukL._AC_SX679_.jpg",
         asset_id: "asset_2",
       },
       {
         type: "image",
-        source:
-          "../../public/images/sony-wh-1000xm4-headphones/81gW2Vb93RL._AC_SX679_.jpg",
+        source: "/images/sony-wh-1000xm4-headphones/81gW2Vb93RL._AC_SX679_.jpg",
         asset_id: "asset_2",
       },
       {
         type: "image",
-        source:
-          "../../public/images/sony-wh-1000xm4-headphones/51gaT35OeML._AC_SX679_.jpg",
+        source: "/images/sony-wh-1000xm4-headphones/51gaT35OeML._AC_SX679_.jpg",
         asset_id: "asset_2",
       },
     ],
@@ -264,20 +257,17 @@ export const products: product[] = [
     image: [
       {
         type: "image",
-        source:
-          "../../public/images/apple-macbook-air-m1/71U5elMmEdL._AC_SX679_.jpg",
+        source: "/images/apple-macbook-air-m1/71U5elMmEdL._AC_SX679_.jpg",
         asset_id: "asset_2",
       },
       {
         type: "image",
-        source:
-          "../../public/images/apple-macbook-air-m1/71U5elMmEdLddd._AC_SX679_.jpg",
+        source: "/images/apple-macbook-air-m1/71U5elMmEdLddd._AC_SX679_.jpg",
         asset_id: "asset_2",
       },
       {
         type: "image",
-        source:
-          "../../public/images/apple-macbook-air-m1/71epSjvAXdL._AC_SX679_.jpg",
+        source: "/images/apple-macbook-air-m1/71epSjvAXdL._AC_SX679_.jpg",
         asset_id: "asset_2",
       },
     ],
@@ -333,19 +323,17 @@ export const products: product[] = [
       {
         type: "image",
         source:
-          "../../public/images/apple-ipad-pro-11/31c0wp4DokL.__AC_SX300_SY300_QL70_FMwebp_.webp",
+          "/images/apple-ipad-pro-11/31c0wp4DokL.__AC_SX300_SY300_QL70_FMwebp_.webp",
         asset_id: "asset_2",
       },
       {
         type: "image",
-        source:
-          "../../public/images/apple-ipad-pro-11/41Hq6LuWU6L._AC_SY879_.jpg",
+        source: "/images/apple-ipad-pro-11/41Hq6LuWU6L._AC_SY879_.jpg",
         asset_id: "asset_2",
       },
       {
         type: "image",
-        source:
-          "../../public/images/apple-ipad-pro-11/61gqvpX4neL._AC_SX679_.jpg",
+        source: "/images/apple-ipad-pro-11/61gqvpX4neL._AC_SX679_.jpg",
         asset_id: "asset_2",
       },
     ],
@@ -400,19 +388,17 @@ export const products: product[] = [
     image: [
       {
         type: "image",
-        source: "../../public/images/sony-playstation-5/31JaiPXYI8L.jpg",
+        source: "/images/sony-playstation-5/31JaiPXYI8L.jpg",
         asset_id: "asset_2",
       },
       {
         type: "image",
-        source:
-          "../../public/images/sony-playstation-5/61+sTzMnIjL._SX522_.jpg",
+        source: "/images/sony-playstation-5/61+sTzMnIjL._SX522_.jpg",
         asset_id: "asset_2",
       },
       {
         type: "image",
-        source:
-          "../../public/images/sony-playstation-5/61QtW8rJpPL._SX522_.jpg",
+        source: "/images/sony-playstation-5/61QtW8rJpPL._SX522_.jpg",
         asset_id: "asset_2",
       },
     ],
@@ -468,19 +454,19 @@ export const products: product[] = [
       {
         type: "image",
         source:
-          "../../public/images/bose-soundlink-bluetooth-speaker/51d5B0TGM4L._AC_SX679_.jpg",
+          "/images/bose-soundlink-bluetooth-speaker/51d5B0TGM4L._AC_SX679_.jpg",
         asset_id: "asset_2",
       },
       {
         type: "image",
         source:
-          "../../public/images/bose-soundlink-bluetooth-speaker/61qdcH+bn7L._AC_SX679_.jpg",
+          "/images/bose-soundlink-bluetooth-speaker/61qdcH+bn7L._AC_SX679_.jpg",
         asset_id: "asset_2",
       },
       {
         type: "image",
         source:
-          "../../public/images/bose-soundlink-bluetooth-speaker/71NctK-1zbL.__AC_SY300_SX300_QL70_FMwebp_.webp",
+          "/images/bose-soundlink-bluetooth-speaker/71NctK-1zbL.__AC_SY300_SX300_QL70_FMwebp_.webp",
         asset_id: "asset_2",
       },
     ],
@@ -536,13 +522,12 @@ export const products: product[] = [
       {
         type: "image",
         source:
-          "../../public/images/gopro-hero9-black/71xvL9XGwYL.__AC_SX300_SY300_QL70_FMwebp_.webp",
+          "/images/gopro-hero9-black/71xvL9XGwYL.__AC_SX300_SY300_QL70_FMwebp_.webp",
         asset_id: "asset_2",
       },
       {
         type: "image",
-        source:
-          "../../public/images//gopro-hero9-black/81Pd79JOubL._AC_SX679_.jpg",
+        source: "/images//gopro-hero9-black/81Pd79JOubL._AC_SX679_.jpg",
         asset_id: "asset_2",
       },
     ],
@@ -598,19 +583,19 @@ export const products: product[] = [
       {
         type: "image",
         source:
-          "../../public/images/jbl-charge-4-portable-speaker/71MbkWeSJ4L.__AC_SX300_SY300_QL70_FMwebp_.webp",
+          "/images/jbl-charge-4-portable-speaker/71MbkWeSJ4L.__AC_SX300_SY300_QL70_FMwebp_.webp",
         asset_id: "asset_4",
       },
       {
         type: "image",
         source:
-          "../../public/images/jbl-charge-4-portable-speaker/71oN2jRexzL._AC_SX679_.jpg",
+          "/images/jbl-charge-4-portable-speaker/71oN2jRexzL._AC_SX679_.jpg",
         asset_id: "asset_4",
       },
       {
         type: "image",
         source:
-          "../../public/images/jbl-charge-4-portable-speaker/81H1zQF62XL._AC_SX679_.jpg",
+          "/images/jbl-charge-4-portable-speaker/81H1zQF62XL._AC_SX679_.jpg",
         asset_id: "asset_4",
       },
     ],
@@ -665,27 +650,23 @@ export const products: product[] = [
     image: [
       {
         type: "image",
-        source:
-          "../../public/images/nike-air-max-270/61TpwR4jLIL._AC_SY695_.jpg",
+        source: "/images/nike-air-max-270/61TpwR4jLIL._AC_SY695_.jpg",
         asset_id: "asset_4",
       },
       {
         type: "image",
-        source:
-          "../../public/images/nike-air-max-270/81Rbhq-4vDL._AC_SY695_.jpg",
+        source: "/images/nike-air-max-270/81Rbhq-4vDL._AC_SY695_.jpg",
         asset_id: "asset_4",
       },
 
       {
         type: "image",
-        source:
-          "../../public/images/nike-air-max-270/51rml9NEk1L._AC_SY695_.jpg",
+        source: "/images/nike-air-max-270/51rml9NEk1L._AC_SY695_.jpg",
         asset_id: "asset_4",
       },
       {
         type: "image",
-        source:
-          "../../public/images/nike-air-max-270/519Avn0sHhL._AC_SY695_.jpg",
+        source: "/images/nike-air-max-270/519Avn0sHhL._AC_SY695_.jpg",
         asset_id: "asset_4",
       },
     ],
@@ -742,19 +723,19 @@ export const products: product[] = [
       {
         type: "image",
         source:
-          "../../public/images/levis-501-original-fit-jeans/71wjbJRLNJL._AC_SX679_.jpg",
+          "/images/levis-501-original-fit-jeans/71wjbJRLNJL._AC_SX679_.jpg",
         asset_id: "asset_4",
       },
       {
         type: "image",
         source:
-          "../../public/images/levis-501-original-fit-jeans/715cFAybkOL._AC_SX679_.jpg",
+          "/images/levis-501-original-fit-jeans/715cFAybkOL._AC_SX679_.jpg",
         asset_id: "asset_4",
       },
       {
         type: "image",
         source:
-          "../../public/images/levis-501-original-fit-jeans/71F5DcSkc1L._AC_SX679_.jpg",
+          "/images/levis-501-original-fit-jeans/71F5DcSkc1L._AC_SX679_.jpg",
         asset_id: "asset_4",
       },
     ],
@@ -811,19 +792,19 @@ export const products: product[] = [
       {
         type: "image",
         source:
-          "../../public/images/nike-sportswear-club-fleece-hoodie/61YK53BjvEL._AC_SX679_.jpg",
+          "/images/nike-sportswear-club-fleece-hoodie/61YK53BjvEL._AC_SX679_.jpg",
         asset_id: "asset_4",
       },
       {
         type: "image",
         source:
-          "../../public/images/nike-sportswear-club-fleece-hoodie/61KU3YmPgPL._AC_SX679_.jpg",
+          "/images/nike-sportswear-club-fleece-hoodie/61KU3YmPgPL._AC_SX679_.jpg",
         asset_id: "asset_4",
       },
       {
         type: "image",
         source:
-          "../../public/images/nike-sportswear-club-fleece-hoodie/617NUr2TEcL._AC_SX679_.jpg",
+          "/images/nike-sportswear-club-fleece-hoodie/617NUr2TEcL._AC_SX679_.jpg",
         asset_id: "asset_4",
       },
     ],
@@ -879,19 +860,19 @@ export const products: product[] = [
       {
         type: "image",
         source:
-          "../../public/images/patagonia-down-sweater-vest/61llX19G58L._AC_SX679_.jpg",
+          "/images/patagonia-down-sweater-vest/61llX19G58L._AC_SX679_.jpg",
         asset_id: "asset_4",
       },
       {
         type: "image",
         source:
-          "../../public/images/patagonia-down-sweater-vest/61AGDvClkoL._AC_SX679_.jpg",
+          "/images/patagonia-down-sweater-vest/61AGDvClkoL._AC_SX679_.jpg",
         asset_id: "asset_4",
       },
       {
         type: "image",
         source:
-          "../../public/images/patagonia-down-sweater-vest/51OQGu41NJL._AC_SX679_.jpg",
+          "/images/patagonia-down-sweater-vest/51OQGu41NJL._AC_SX679_.jpg",
         asset_id: "asset_4",
       },
     ],
@@ -3155,17 +3136,17 @@ export const products: product[] = [
       {
         type: "image",
         source:
-          "../../public/images/deckerrrrrr/41OHdQhjj0S.__AC_SY300_SX300_QL70_FMwebp_.webp",
+          "/images/deckerrrrrr/41OHdQhjj0S.__AC_SY300_SX300_QL70_FMwebp_.webp",
         asset_id: "asset_54_1",
       },
       {
         type: "image",
-        source: "../../public/images/deckerrrrrr/510A54hJKgS._AC_SX679_.jpg",
+        source: "/images/deckerrrrrr/510A54hJKgS._AC_SX679_.jpg",
         asset_id: "asset_54_1",
       },
       {
         type: "image",
-        source: "../../public/images/deckerrrrrr/81jqurpHtWS._AC_SX679_.jpg",
+        source: "/images/deckerrrrrr/81jqurpHtWS._AC_SX679_.jpg",
         asset_id: "asset_54_1",
       },
     ],
@@ -3221,12 +3202,12 @@ export const products: product[] = [
     image: [
       {
         type: "image",
-        source: "../../public/images/Milwaukee/51NYVksCPBL._AC_SX679_.jpg",
+        source: "/images/Milwaukee/51NYVksCPBL._AC_SX679_.jpg",
         asset_id: "asset_55_1",
       },
       {
         type: "image",
-        source: "../../public/images/Milwaukee/51Kb04rnxmL._AC_SX679_.jpg",
+        source: "/images/Milwaukee/51Kb04rnxmL._AC_SX679_.jpg",
         asset_id: "asset_55_1",
       },
     ],
@@ -3282,12 +3263,12 @@ export const products: product[] = [
     image: [
       {
         type: "image",
-        source: "../../public/images/Cordlessr/719PREZZ4PL._AC_SX679_.jpg",
+        source: "/images/Cordlessr/719PREZZ4PL._AC_SX679_.jpg",
         asset_id: "asset_56_1",
       },
       {
         type: "image",
-        source: "../../public/images/Cordlessr/817S-AzeewL._AC_SX679_.jpg",
+        source: "/images/Cordlessr/817S-AzeewL._AC_SX679_.jpg",
         asset_id: "asset_56_2",
       },
     ],
@@ -3343,18 +3324,18 @@ export const products: product[] = [
     image: [
       {
         type: "image",
-        source: "../../public/images/Craftsman/71ut+9gWGyL._AC_SY879_.jpg",
+        source: "/images/Craftsman/71ut+9gWGyL._AC_SY879_.jpg",
         asset_id: "asset_57_1",
       },
 
       {
         type: "image",
-        source: "../../public/images/Craftsman/81P2Dq9KCAL._AC_SX679_.jpg",
+        source: "/images/Craftsman/81P2Dq9KCAL._AC_SX679_.jpg",
         asset_id: "asset_57_1",
       },
       {
         type: "image",
-        source: "../../public/images/Craftsman/71XqeO3fD6L._AC_SX679_.jpg",
+        source: "/images/Craftsman/71XqeO3fD6L._AC_SX679_.jpg",
         asset_id: "asset_57_1",
       },
     ],

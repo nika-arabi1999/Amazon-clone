@@ -14,7 +14,7 @@ function HomeLayout({ children }: { children: React.ReactNode }) {
        
       />
       <SidebarSheet showSheet={showMenu} setShowSheet={setShowMenu} top="0">
-        <MenuSheet />
+        <MenuSheet setShowMenu={setShowMenu}/>
         {/* menu list */}
       </SidebarSheet>
       {children}

@@ -142,11 +142,15 @@ function Products() {
           <div className="products-Loading">
             <ReactLoading type="spin" color="#ffd000" height={70} width={70} />
           </div>
-        ) : (
+        ) : filteredProducts && filteredProducts.length > 0 ? (
           <div className="products-items">
-            {filteredProducts?.map((product, index) => {
+            {filteredProducts.map((product, index) => {
               return <ProductCard product={product} key={index} />;
             })}
+          </div>
+        ) : (
+          <div className="products-items-notFound">
+            THERE IS NO PRODUCT WITH THIS INFORMATION!
           </div>
         )}
       </div>

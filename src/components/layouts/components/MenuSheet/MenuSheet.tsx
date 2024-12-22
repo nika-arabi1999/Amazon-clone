@@ -7,7 +7,6 @@ import { useEffect, useState } from "react";
 import { mockApi } from "../../../../services/mockApi";
 import { category } from "../../../../services/types";
 
-
 // const categories = [
 //   {
 //     title: "Shop by Department",
@@ -28,7 +27,11 @@ import { category } from "../../../../services/types";
 //     categories: ["Electronics", "Computers", "Smart Home", "Arts and Crafts"],
 //   },
 // ];
-function MenuSheet() {
+function MenuSheet({
+  setShowMenu,
+}: {
+  setShowMenu: React.Dispatch<React.SetStateAction<boolean>>;
+}) {
   // const { data } = useGetCategoriesQuery();
   // const categories = data?.data;
   const [categories, setCategories] = useState<category[]>([]);
@@ -42,7 +45,7 @@ function MenuSheet() {
         setLoading(true);
         const categories = await mockApi.getCategories(); // Example: Fetching categories from "Electronics"
         setCategories(categories);
-      } catch (err:any) {
+      } catch (err: any) {
         setError(err.message);
       } finally {
         setLoading(false);
@@ -80,6 +83,7 @@ function MenuSheet() {
                 <Link
                   to={`/products/${category.id}`}
                   className="menu-content_box_item"
+                  onClick={() => setShowMenu(false)}
                 >
                   {" "}
                   <p>{category.name}</p>
