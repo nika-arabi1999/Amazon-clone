@@ -45,7 +45,7 @@ export function SwiperRelatedItems({ relatedProducts }: { relatedProducts: produ
           slidesPerView={slidesPerView}
           mousewheel={true}
           navigation={true}
-          className="card-swiper"
+          // className="card-swiper"
           height={400}
         >
           {relatedProducts?.map((product, index) => {
