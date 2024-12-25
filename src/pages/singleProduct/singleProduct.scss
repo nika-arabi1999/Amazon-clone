@@ -47,6 +47,11 @@
 
  }
 
+ .image-gallery {
+    height: auto;
+    // max-height: 500px;
+ }
+
 @media (min-width: 768px) {
     .product{
         &-info {

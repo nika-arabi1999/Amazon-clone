@@ -7,6 +7,7 @@ function SingleProductSwiper({ product }: { product: product }) {
   const productsWithOriginal = product.image.map((image) => ({
     original: image.source,
     thumbnail: image.source,
+    originalHeight: 400,
   }));
   return (
     <ImageGallery
@@ -16,6 +17,7 @@ function SingleProductSwiper({ product }: { product: product }) {
       slideInterval={1000}
       slideOnThumbnailOver={true}
       showIndex={true}
+      additionalClass="image-gallery"
     />
   );
 }
