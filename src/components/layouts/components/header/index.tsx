@@ -6,7 +6,7 @@ import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
 import { useZustandStore } from "../../../../services/store";
 import { Link, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
-// import { useDebounce } from "use-debounce";
+import { useDebounce } from "use-debounce";
 import { categories, products } from "../../../../services/staticData";
 import { product } from "../../../../services/types";
 
@@ -71,7 +71,7 @@ function NavSearch({ device }: { device: string }) {
     navigate(`/search?query=${searchTerm}&searchCategory=${categoryTerm}`);
   };
 
-  // const [value] = useDebounce(searchTerm, 300);
+  const [value] = useDebounce(searchTerm, 300);
   const handleSuggestion = (value: string | null) => {
     if (value) {
       const searchedItems: product[] = products.filter((product) =>
@@ -82,8 +82,8 @@ function NavSearch({ device }: { device: string }) {
     return;
   };
   useEffect(() => {
-    handleSuggestion(searchTerm);
-  }, [searchTerm]);
+    handleSuggestion(value);
+  }, [value]);
   useEffect(() => {
     function closeList(e:any){
 

@@ -149,7 +149,7 @@ a {
           overflow-y: scroll;
           background: #fff;
           position: absolute;
-          display: flex;
+          display: none;
           flex-direction: column;
           align-items: start;
           justify-content: start;
@@ -207,6 +207,10 @@ a {
   }
   .mobile {
     display: flex;
+  }
+  .search_item__list{
+    display: flex;
+   
   }
 }
 
