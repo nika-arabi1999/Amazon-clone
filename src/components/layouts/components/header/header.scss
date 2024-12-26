@@ -154,6 +154,7 @@ a {
           gap: 10px;
           top: 40px;
           left: 0;
+          overflow: hidden;
           z-index: 99999999;
           padding-left: 10px;
           border: 1px solid #000;
@@ -166,6 +167,11 @@ a {
             text-align: start;
             color: #000;
             cursor: pointer;
+            width: 100%;
+            display: block;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
           }
 
         }

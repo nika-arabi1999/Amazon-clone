@@ -55,7 +55,7 @@ function MenuSheet({
   }, []);
 
   if (loading) {
-    return <>is Loading...</>;
+    return <div>is Loading...</div>;
   }
   if (error) {
     return <>an error occured!</>;

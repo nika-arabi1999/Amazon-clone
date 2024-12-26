@@ -17,7 +17,7 @@ function TopHeader({
 }) {
   // const { data: cart} = useGetCartQuery("cart_ypbroEGWOVl8n4");
   const cart = useZustandStore((state) => state.cart);
-  console.log(cart);
+  // console.log(cart);
   const navigate = useNavigate();
 
   return (
@@ -42,17 +42,14 @@ function TopHeader({
           <a href="#">
             <PersonIcon sx={{ fontSize: 35 }} />
           </a>
-          <a href="#" className="cart-icon">
+          <div className="cart-icon" onClick={() => navigate("/cart")}>
             {cart?.total_items ? (
               <span className="cart-span">{cart?.total_items}</span>
             ) : (
               ""
             )}
-            <ShoppingCartOutlinedIcon
-              sx={{ fontSize: 35 }}
-              onClick={() => navigate("/cart")}
-            />
-          </a>
+            <ShoppingCartOutlinedIcon sx={{ fontSize: 35 }} />
+          </div>
         </div>
       </div>
       <div className="nav_row nav_row__down">
@@ -87,6 +84,15 @@ function NavSearch({ device }: { device: string }) {
   useEffect(() => {
     handleSuggestion(value);
   }, [value]);
+  useEffect(() => {
+    function closeList(e:any){
+
+    if( e.target.id !== "search_input" ){
+      setShowList(false);
+    }
+    }
+    window.addEventListener("click", closeList)
+  }, []);
   return (
     <div className={`search ${device}`}>
       <div className="search_box search_box__category">
@@ -105,6 +111,7 @@ function NavSearch({ device }: { device: string }) {
       <div className="search_box search_box__input">
         <input
           type="text"
+          id="search_input"
           className="search_item search_item__input"
           placeholder="Search Amazon"
           onChange={(e) => {
@@ -117,10 +124,13 @@ function NavSearch({ device }: { device: string }) {
           // <div className="list-backdrop">
           <div
             className="search_item search_item__list"
-            onMouseLeave={() => setShowList(false)}
+            
           >
             {searchedProducts?.map((product) => (
-              <Link to={`/singleProduct/${product.product_id}`}>
+              <Link
+                to={`/singleProduct/${product.product_id}`}
+                onClick={() => setShowList(false)}
+              >
                 {product.name}
               </Link>
             ))}
