@@ -6,7 +6,7 @@ import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
 import { useZustandStore } from "../../../../services/store";
 import { Link, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
-import { useDebounce } from "use-debounce";
+// import { useDebounce } from "use-debounce";
 import { categories, products } from "../../../../services/staticData";
 import { product } from "../../../../services/types";
 
@@ -71,7 +71,7 @@ function NavSearch({ device }: { device: string }) {
     navigate(`/search?query=${searchTerm}&searchCategory=${categoryTerm}`);
   };
 
-  const [value] = useDebounce(searchTerm, 300);
+  // const [value] = useDebounce(searchTerm, 300);
   const handleSuggestion = (value: string | null) => {
     if (value) {
       const searchedItems: product[] = products.filter((product) =>
@@ -82,8 +82,8 @@ function NavSearch({ device }: { device: string }) {
     return;
   };
   useEffect(() => {
-    handleSuggestion(value);
-  }, [value]);
+    handleSuggestion(searchTerm);
+  }, [searchTerm]);
   useEffect(() => {
     function closeList(e:any){
 
@@ -115,10 +115,10 @@ function NavSearch({ device }: { device: string }) {
           className="search_item search_item__input"
           placeholder="Search Amazon"
           onChange={(e) => {
-            if(e.target.value){
+            if(e.target.value.length > 0){
             setSearchTerm(e.target.value);
             setShowList(true);
-          } else {
+          } else if(e.target.value.length === 0) {
             setShowList(false);
           }
             
@@ -126,7 +126,7 @@ function NavSearch({ device }: { device: string }) {
           onClick={() => setShowList(true)}
         />
         {showList && (
-          // <div className="list-backdrop">
+        
           <div
             className="search_item search_item__list"
             
@@ -140,7 +140,7 @@ function NavSearch({ device }: { device: string }) {
               </Link>
             ))}
           </div>
-          // </div>
+        
         )}
       </div>
       <div className="search_box search_box__btn">
