@@ -67,7 +67,7 @@ function SingleProduct() {
     fetchProduct(product_id);
   }, [product_id]);
 
-  // const text = "<div style={{ color: `black` }}>Loading...</div>";
+ 
   if (loading)
     return (
       <div className="products-Loading">
