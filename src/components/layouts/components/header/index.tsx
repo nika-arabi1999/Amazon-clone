@@ -115,8 +115,13 @@ function NavSearch({ device }: { device: string }) {
           className="search_item search_item__input"
           placeholder="Search Amazon"
           onChange={(e) => {
+            if(e.target.value){
             setSearchTerm(e.target.value);
             setShowList(true);
+          } else {
+            setShowList(false);
+          }
+            
           }}
           onClick={() => setShowList(true)}
         />

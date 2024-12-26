@@ -145,6 +145,8 @@ a {
         &__list {
           width: 100%;
           height: auto;
+          
+          overflow-y: scroll;
           background: #fff;
           position: absolute;
           display: flex;
@@ -154,7 +156,7 @@ a {
           gap: 10px;
           top: 40px;
           left: 0;
-          overflow: hidden;
+          overflow-x: hidden;
           z-index: 99999999;
           padding-left: 10px;
           border: 1px solid #000;
@@ -215,6 +217,7 @@ a {
   .mobile {
     display: none;
   }
+
 }
 
 
